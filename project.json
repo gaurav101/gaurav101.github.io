@@ -1,0 +1,651 @@
+{
+  "settings": {
+    "currentPage": "index.html"
+  },
+  "pages": {
+    "index.html": {
+      "settings": {
+        "main": true,
+        "title": "Gaurav Kumar Singh",
+        "meta_descr": "PHP and Javascript  expert ",
+        "header_custom": "<!-- Paste any valid HTML code here. The code will be inserted to the end of <head> section, right before </head> -->",
+        "footer_custom": "<!-- Paste any valid HTML code here. The code will be inserted to the end of <body> section, right before </body> -->"
+      },
+      "components": [
+        {
+          "_name": "header1",
+          "_params": {
+            "bgImageRadio": true,
+            "bgImage": "file:///Users/aeon/Desktop/C360_2016-02-18-00-01-38-054.jpg",
+            "parallax": true,
+            "bgColorRadio": false,
+            "bgColor": "#28324e",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": true,
+            "overlayColor": "#222",
+            "overlayOpacity": "0.8"
+          },
+          "text": "\n                        <h1>GAURAV KUMAR SINGH</h1><p>Javascript and PHP Expert</p>\n                    ",
+          "buttons": "<a data-app-btn=\"true\" class=\"btn btn-lg btn-danger\" href=\"mailto::gaurav.kr.singh1@gmail.com\" id=\"note-editor-312\">Hire me</a> <a data-app-btn=\"true\" class=\"btn btn-lg btn-default\" href=\"https://www.dropbox.com/s/j8rspvc0r2j7big/GauravCV.docx?dl=0\" id=\"note-editor-313\" target=\"_blank\">Download CV</a>",
+          "_anchor": "header1-1"
+        },
+        {
+          "_params": {
+            "bgImageRadio": true,
+            "bgImage": "file:///Users/aeon/Desktop/abstract_eyes_text_programming_1920x1080.jpg",
+            "parallax": true,
+            "bgColorRadio": false,
+            "bgColor": "#efefef",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": true,
+            "overlayColor": "#28324e",
+            "overlayOpacity": "0.6"
+          },
+          "caption": "\n                            \n                            \n                            <h3 style=\"color: #fff\">Who Am I&nbsp;</h3> <p class=\"p1\"><span class=\"s1\">Hello there! My name is Gaurav Kumar Singh - a <span style=\"font-weight: bold;\">28 year </span>old having <span style=\"font-weight: bold;\">5+ years of experience in backend &amp; front-end developer</span> .&nbsp;</span><span class=\"s1\">I primarily design &amp; develop websites, but also enjoy working on user interfaces for web and Mobile application.&nbsp;</span>Form the past <span style=\"font-weight: bold;\">2.7 years </span>I have been working as a team lead and senior developer at Aeonlogiciel while also doing my MCA from SMU (Distance education) . I am a self-taught developer, learning how to code from looking at websites online and learning many programming books. I have a strong grasp at what I am doing and always try to out-do my last project. To cut to the chase, I can develop&nbsp; good front end and backend&nbsp; and can deliver the application with in timeline. I'm a honest individual who is very helpful and likes to build strong relationships with the people I work with. Please feel free to contact me at gaurav.kr.singh1@gmail.com</p><p class=\"p2\"><span class=\"s1\"></span></p>\n                        \n                        \n                        ",
+          "_name": "content5",
+          "_anchor": "content5-5",
+          "_styles": {
+            "P": {
+              "color": "#fcfafa"
+            }
+          }
+        },
+        {
+          "_name": "footer1",
+          "text": "\n                <p>GAURAV© 2016</p>\n            ",
+          "_params": {
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#444444",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": true,
+            "overlayColor": "#000000",
+            "overlayOpacity": 0.5
+          },
+          "_anchor": "footer1-2"
+        },
+        {
+          "_params": {
+            "textAlign": "left",
+            "inverse": false,
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#f97352",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5
+          },
+          "image": "file:///Users/aeon/Desktop/FB_IMG_1454893816492.jpg",
+          "text": "<span style=\"font-size: 25px; font-weight: bold; letter-spacing: 6px; line-height: 48px;\">My Skills</span><br><p>I have a good knowledge in HTML, CSS, PHP ,JavaScript/jQuery &nbsp;and Angular Js that \nallows me to build well structured, attravtive websites. I also work with Titanium &nbsp;to develop cross platefiom Mobile application<br></p>\n                    ",
+          "button": "\n                            \n                        ",
+          "_name": "msg-box4",
+          "_anchor": "msg-box4-28"
+        },
+        {
+          "_params": {
+            "inverse": false,
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#fff",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5,
+            "counters": true,
+            "facebook": true,
+            "twitter": true,
+            "google": true
+          },
+          "text": "\n                <h2>IF YOU LIKE MY PROFILE , PLEASE SHARE IT!</h2>\n            ",
+          "_name": "social-buttons1",
+          "_anchor": "social-buttons1-8"
+        }
+      ]
+    },
+    "page1.html": {
+      "settings": {},
+      "components": [
+        {
+          "_name": "menu",
+          "_params": {
+            "logo": true,
+            "brand": "Gaurav Kumar Singh",
+            "textColor": "#d14841",
+            "items": [
+              {
+                "title": "Home",
+                "href": "http://mobirise.com",
+                "pages": "",
+                "anchor": ""
+              },
+              {
+                "title": "About",
+                "href": "http://mobirise.com",
+                "pages": "",
+                "anchor": ""
+              },
+              {
+                "title": "Contact",
+                "href": "http://mobirise.com",
+                "pages": "",
+                "anchor": ""
+              }
+            ]
+          },
+          "logo": "images/logo.png",
+          "_anchor": "menu-0"
+        },
+        {
+          "_params": {
+            "bgImageRadio": true,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": false,
+            "bgColor": "#28324e",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5
+          },
+          "text": "<h1>MOBIRISE WEBSITE BUILDER</h1><p>Create awesome mobile-friendly websites. No coding and free.</p>",
+          "buttons": "<a data-app-btn=\"true\" class=\"btn btn-lg btn-danger\" href=\"http://mobirise.com\">FOR WINDOWS</a> <a data-app-btn=\"true\" class=\"btn btn-lg btn-default\" href=\"http://mobirise.com\">FOR MAC</a>",
+          "_name": "header1",
+          "_anchor": "header1-10"
+        },
+        {
+          "_params": {
+            "columns": 4,
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#fff",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5
+          },
+          "img1": "images/bootstrap.png",
+          "img2": "images/responsive.png",
+          "img3": "images/google-fonts.png",
+          "img4": "images/unlimited-websites.png",
+          "caption1": "<h3>BOOTSTRAP 3</h3><p>Bootstrap 3 has been noted as one of the most reliable and proven frameworks and Mobirise has been equipped to develop websites using this framework.</p>",
+          "caption2": "<h3>RESPONSIVE</h3><p>One of Bootstrap 3's big points is responsiveness and Mobirise makes effective use of this by generating highly responsive website for you.</p>",
+          "caption3": "<h3>WEB FONTS</h3><p>Google has a highly exhaustive list of fonts compiled into its web font platform and Mobirise makes it easy for you to use them on your website easily and freely.</p>",
+          "caption4": "<h3>UNLIMITED WEBSITES</h3><p>Mobirise gives you the freedom to develop as many websites as you like given the fact that it is a desktop app.</p>",
+          "button1": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-default\">LEARN MORE</a>",
+          "button2": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-default\">LEARN MORE</a>",
+          "button3": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-default\">LEARN MORE</a>",
+          "button4": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-default\">LEARN MORE</a>",
+          "_name": "features1",
+          "_anchor": "features1-11"
+        },
+        {
+          "_params": {
+            "inverse": false,
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#3C3C3C",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5
+          },
+          "text": "<h2>PRE MADE BLOCKS</h2><p>Mobirise comes with huge collection of pre made layouts to help make your development faster.</p>",
+          "button": "<a data-app-btn=\"true\" class=\"btn btn-lg btn-danger\" href=\"http://mobirise.com\">START A JOURNEY</a>",
+          "_name": "msg-box1",
+          "_anchor": "msg-box1-12"
+        },
+        {
+          "_params": {
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#fff",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5
+          },
+          "text": "<h2>MODERN STYLES</h2><p>Mobirise has provided for website developers a growing library of modern blocks which can be used either partially or in full for every website developed through the builder.</p>",
+          "button": "<a data-app-btn=\"true\" class=\"btn btn-lg btn-default\" href=\"http://mobirise.com\">SEE ALL TEMPLATES</a>",
+          "_name": "msg-box3",
+          "_anchor": "msg-box3-13"
+        },
+        {
+          "_params": {
+            "firstType": "green",
+            "secondType": "orange",
+            "thirdType": "favorite",
+            "fourthType": "blue",
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#f0f0f0",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5
+          },
+          "title1": "<h3>STANDARD</h3>",
+          "title2": "<h3>BUSINESS</h3>",
+          "title3": "<h3>PREMIUM</h3>",
+          "title4": "<h3>ULTIMATE</h3>",
+          "price1": "<strong><sup>$</sup>0</strong><small>per month</small>",
+          "price2": "<strong><sup>$</sup>0</strong><small>per month</small>",
+          "price3": "<strong><sup>$</sup>0</strong><small>per month</small>",
+          "price4": "<strong><sup>$</sup>0</strong><small>per month</small>",
+          "list1": "<ul><li><b>32 GB</b> Storage</li><li><b>Unlimited</b> Users</li><li><b>15 GB</b> Bandwidth</li></ul>",
+          "list2": "<ul><li><b>80 GB</b> Storage</li><li><b>Unlimited</b> Users</li><li><b>20 GB</b> Bandwidth</li></ul>",
+          "list3": "<ul><li><b>100 GB</b> Storage</li><li><b>Unlimited</b> Users</li><li><b>50 GB</b> Bandwidth</li></ul>",
+          "list4": "<ul><li><b>Unlimited</b> Storage</li><li><b>Unlimited</b> Users</li><li><b>1TB GB</b> Bandwidth</li></ul>",
+          "button1": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-success\">DEMO LINK</a>",
+          "button2": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-success\">DEMO LINK</a>",
+          "button3": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-success\">DEMO LINK</a>",
+          "button4": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-success\">DEMO LINK</a>",
+          "_name": "pricing-table1",
+          "_anchor": "pricing-table1-15"
+        },
+        {
+          "_params": {
+            "inverse": false,
+            "bgImageRadio": true,
+            "bgImage": "images/bg.jpg",
+            "parallax": false,
+            "bgColorRadio": false,
+            "bgColor": "#fff",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5,
+            "counters": true,
+            "facebook": false,
+            "twitter": true,
+            "google": true
+          },
+          "text": "<h2>IF YOU LIKE MOBIRISE, PLEASE SHARE IT!</h2>",
+          "_name": "social-buttons1",
+          "_anchor": "social-buttons1-14"
+        },
+        {
+          "_name": "footer1",
+          "text": "Mobirise &copy; 2015",
+          "_params": {
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#444444",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": true,
+            "overlayColor": "#000000",
+            "overlayOpacity": 0.5
+          },
+          "_anchor": "footer1-2"
+        }
+      ]
+    },
+    "page2.html": {
+      "settings": {},
+      "components": []
+    },
+    "page3.html": {
+      "settings": {},
+      "components": []
+    },
+    "page4.html": {
+      "settings": {},
+      "components": []
+    },
+    "page5.html": {
+      "settings": {},
+      "components": []
+    },
+    "page6.html": {
+      "settings": {
+        "title": "Gaurav Kumar Singh",
+        "meta_descr": "Programmer nothing else",
+        "header_custom": "<!-- Paste any valid HTML code here. The code will be inserted to the end of <head> section, right before </head> -->",
+        "footer_custom": "<!-- Paste any valid HTML code here. The code will be inserted to the end of <body> section, right before </body> -->"
+      },
+      "components": [
+        {
+          "_name": "header1",
+          "_params": {
+            "bgImageRadio": true,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": false,
+            "bgColor": "#28324e",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.2
+          },
+          "text": "<h1>MOBIRISE WEBSITE BUILDER</h1><p>Create awesome mobile-friendly websites. No coding and free.</p>",
+          "buttons": "<a data-app-btn=\"true\" class=\"btn btn-lg btn-danger\" href=\"http://mobirise.com\">FOR WINDOWS</a> <a data-app-btn=\"true\" class=\"btn btn-lg btn-default\" href=\"http://mobirise.com\">FOR MAC</a>",
+          "_anchor": "header1-14"
+        },
+        {
+          "_params": {
+            "bgImageRadio": true,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": false,
+            "bgColor": "#fff",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": true,
+            "overlayColor": "#28324e",
+            "overlayOpacity": 0.6
+          },
+          "caption": "<h3 style=\"color: #fff\">EASY TO USE!</h3> <p style=\"color: #fff\">Make your own website in a few clicks! Mobirise helps you cut down development time by providing you with a flexible website editor with a drag and drop interface. MobiRise Website Builder creates responsive, retina and mobile friendly websites in a few clicks. Mobirise is one of the easiest website development tools available today. It also gives you the freedom to develop as many websites as you like given the fact that it is a desktop app.</p>",
+          "_name": "content5",
+          "_anchor": "content5-15"
+        },
+        {
+          "_params": {
+            "firstType": "green",
+            "secondType": "orange",
+            "thirdType": "favorite",
+            "fourthType": "blue",
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#f0f0f0",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5
+          },
+          "title1": "<h3>STANDARD</h3>",
+          "title2": "<h3>BUSINESS</h3>",
+          "title3": "<h3>PREMIUM</h3>",
+          "title4": "<h3>ULTIMATE</h3>",
+          "price1": "<strong><sup>$</sup>0</strong><small>per month</small>",
+          "price2": "<strong><sup>$</sup>0</strong><small>per month</small>",
+          "price3": "<strong><sup>$</sup>0</strong><small>per month</small>",
+          "price4": "<strong><sup>$</sup>0</strong><small>per month</small>",
+          "list1": "<ul><li><b>32 GB</b> Storage</li><li><b>Unlimited</b> Users</li><li><b>15 GB</b> Bandwidth</li></ul>",
+          "list2": "<ul><li><b>80 GB</b> Storage</li><li><b>Unlimited</b> Users</li><li><b>20 GB</b> Bandwidth</li></ul>",
+          "list3": "<ul><li><b>100 GB</b> Storage</li><li><b>Unlimited</b> Users</li><li><b>50 GB</b> Bandwidth</li></ul>",
+          "list4": "<ul><li><b>Unlimited</b> Storage</li><li><b>Unlimited</b> Users</li><li><b>1TB GB</b> Bandwidth</li></ul>",
+          "button1": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-success\">DEMO LINK</a>",
+          "button2": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-success\">DEMO LINK</a>",
+          "button3": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-success\">DEMO LINK</a>",
+          "button4": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-success\">DEMO LINK</a>",
+          "_name": "pricing-table1",
+          "_anchor": "pricing-table1-16"
+        },
+        {
+          "_params": {
+            "bgImageRadio": true,
+            "bgImage": "images/bg2.jpg",
+            "parallax": true,
+            "bgColorRadio": false,
+            "bgColor": "#f0f0f0",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": true,
+            "overlayColor": "#222",
+            "overlayOpacity": "0.4"
+          },
+          "text": "<h2>MOBIRISE</h2><p>Make your own website in a few clicks! Mobirise helps you cut down development time by providing you with a flexible website editor with a drag and drop interface.</p>",
+          "buttons": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-info btn-lg\">SIGN UP TODAY</a> <a data-app-btn=\"true\" class=\"btn btn-lg btn-default\" href=\"http://mobirise.com\">LEARN MORE</a>",
+          "_name": "header2",
+          "_anchor": "header2-17"
+        },
+        {
+          "_params": {
+            "inverse": false,
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#fff",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5,
+            "counters": true,
+            "facebook": true,
+            "twitter": true,
+            "google": true
+          },
+          "text": "<h2>IF YOU LIKE MOBIRISE, PLEASE SHARE IT!</h2>",
+          "_name": "social-buttons1",
+          "_anchor": "social-buttons1-18"
+        },
+        {
+          "_name": "footer1",
+          "text": "Mobirise &copy; 2015",
+          "_params": {
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#444444",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": true,
+            "overlayColor": "#000000",
+            "overlayOpacity": 0.5
+          },
+          "_anchor": "footer1-19"
+        }
+      ]
+    },
+    "page7.html": {
+      "settings": {},
+      "components": [
+        {
+          "_name": "menu",
+          "_params": {
+            "logo": true,
+            "brand": "Gaurav Kumar Singh",
+            "textColor": "#d14841",
+            "items": [
+              {
+                "title": "Home",
+                "href": "http://mobirise.com",
+                "pages": "",
+                "anchor": ""
+              },
+              {
+                "title": "About",
+                "href": "http://mobirise.com",
+                "pages": "",
+                "anchor": ""
+              },
+              {
+                "title": "Contact",
+                "href": "http://mobirise.com",
+                "pages": "",
+                "anchor": ""
+              }
+            ]
+          },
+          "logo": "images/logo.png",
+          "_anchor": "menu-0"
+        },
+        {
+          "_params": {
+            "bgImageRadio": true,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": false,
+            "bgColor": "#28324e",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5
+          },
+          "text": "<h1>MOBIRISE WEBSITE BUILDER</h1><p>Create awesome mobile-friendly websites. No coding and free.</p>",
+          "buttons": "<a data-app-btn=\"true\" class=\"btn btn-lg btn-danger\" href=\"http://mobirise.com\">FOR WINDOWS</a> <a data-app-btn=\"true\" class=\"btn btn-lg btn-default\" href=\"http://mobirise.com\">FOR MAC</a>",
+          "_name": "header1",
+          "_anchor": "header1-21"
+        },
+        {
+          "_params": {
+            "textAlign": "left",
+            "inverse": false,
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#f97352",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5
+          },
+          "image": "images/iphone.png",
+          "text": "<h2>DRAG AND DROP WEBSITE BUILDER</h2><p>Make your own website in a few clicks! Mobirise helps you cut down development time by providing you with a flexible website editor with a drag and drop interface.</p>",
+          "button": "<a data-app-btn=\"true\" class=\"btn btn-lg btn-default\" href=\"http://mobirise.com\">LEARN MORE</a>",
+          "_name": "msg-box4",
+          "_anchor": "msg-box4-22"
+        },
+        {
+          "_params": {
+            "columns": 4,
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#fff",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5
+          },
+          "img1": "images/bootstrap.png",
+          "img2": "images/responsive.png",
+          "img3": "images/google-fonts.png",
+          "img4": "images/unlimited-websites.png",
+          "caption1": "<h3>BOOTSTRAP 3</h3><p>Bootstrap 3 has been noted as one of the most reliable and proven frameworks and Mobirise has been equipped to develop websites using this framework.</p>",
+          "caption2": "<h3>RESPONSIVE</h3><p>One of Bootstrap 3's big points is responsiveness and Mobirise makes effective use of this by generating highly responsive website for you.</p>",
+          "caption3": "<h3>WEB FONTS</h3><p>Google has a highly exhaustive list of fonts compiled into its web font platform and Mobirise makes it easy for you to use them on your website easily and freely.</p>",
+          "caption4": "<h3>UNLIMITED WEBSITES</h3><p>Mobirise gives you the freedom to develop as many websites as you like given the fact that it is a desktop app.</p>",
+          "button1": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-default\">LEARN MORE</a>",
+          "button2": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-default\">LEARN MORE</a>",
+          "button3": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-default\">LEARN MORE</a>",
+          "button4": "<a data-app-btn=\"true\" href=\"http://mobirise.com\" class=\"btn btn-default\">LEARN MORE</a>",
+          "_name": "features1",
+          "_anchor": "features1-24"
+        },
+        {
+          "_params": {
+            "inverse": false,
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#3C3C3C",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": false,
+            "overlayColor": "#222",
+            "overlayOpacity": 0.5
+          },
+          "text": "<h2>PRE MADE BLOCKS</h2><p>Mobirise comes with huge collection of pre made layouts to help make your development faster.</p>",
+          "button": "<a data-app-btn=\"true\" class=\"btn btn-lg btn-danger\" href=\"http://mobirise.com\">START A JOURNEY</a>",
+          "_name": "msg-box1",
+          "_anchor": "msg-box1-25"
+        },
+        {
+          "_name": "footer1",
+          "text": "Mobirise &copy; 2015",
+          "_params": {
+            "bgImageRadio": false,
+            "bgImage": "images/bg.jpg",
+            "parallax": true,
+            "bgColorRadio": true,
+            "bgColor": "#444444",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "http://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": true,
+            "overlayColor": "#000000",
+            "overlayOpacity": 0.5
+          },
+          "_anchor": "footer1-19"
+        }
+      ]
+    }
+  }
+}
