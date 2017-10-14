@@ -1,11 +1,15 @@
 var fireworks = [];
 var gravity;
 var song;
+function preload(){
+  song=loadSound("sound.wav");
+}
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   colorMode(HSB);
   gravity = createVector(0, 0.2);
-  //song=loadSound("sound.wav");
+  //
+
 
   stroke(255);
   strokeWeight(4);
@@ -16,14 +20,14 @@ function draw() {
   colorMode(RGB);
   background(0, 0, 0, 25);
   textSize(100);
-text("Happy Diwali", width/4, 100);
+text("Happy Birthday", width/4, 100);
 fill(0, 102, 153);
 
-text("to all", (width/2)-100, 200);
+text(" to you ", (width/2)-100, 200);
 fill(0, 102, 153, 51);
 
 
-  if (random(1) < 0.03) {
+  if (random(1) < 0.06) {
     fireworks.push(new Firework());
   }
 
@@ -33,6 +37,9 @@ fill(0, 102, 153, 51);
 
     if (fireworks[i].done()) {
       fireworks.splice(i, 1);
+      song.play();
+      song.rate(.5);
+      song.pan(random(-1,1))
     }
   }
 }
@@ -44,7 +51,7 @@ function Particle(x, y, hu, firework) {
   this.acc = createVector(0, 0);
 
   if (this.firework) {
-    this.vel = createVector(0, random(-12, -10));
+    this.vel = createVector(0, random(-12, -18));
   } else {
     this.vel = p5.Vector.random2D();
       //song.play();
