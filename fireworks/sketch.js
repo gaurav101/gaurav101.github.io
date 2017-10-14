@@ -23,11 +23,10 @@ function draw() {
 text("Happy Birthday", width/4, 100);
 fill(0, 102, 153);
 
-<<<<<<< HEAD
+
 text(" to you ", (width/2)-100, 200);
-=======
-text("to you ", (width/2)-100, 200);
->>>>>>> d35d528949f6a0cc1c3b84c7aeeec0e3d7105341
+
+
 fill(0, 102, 153, 51);
 
 
