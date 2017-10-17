@@ -20,11 +20,11 @@ function draw() {
   colorMode(RGB);
   background(0, 0, 0, 25);
   textSize(100);
-text("Happy Birthday", width/4, 100);
-fill(0, 102, 153);
+  text("Happy Diwali", width/3, 100);
+  fill(0, 102, 153);
 
 
-text(" to you ", (width/2)-100, 200);
+  text(" to all of you", (width/2)-100, 200);
 
 fill(0, 102, 153, 51);
 
