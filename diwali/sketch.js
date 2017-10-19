@@ -24,7 +24,7 @@ text("Happy Diwali", width/3, 100);
 fill(0, 102, 153);
 
 
-text(" to all of you", (width/2)-100, 200);
+text("Stay Blessed", (width/2)-100, 200);
 
 fill(0, 102, 153, 51);
 
