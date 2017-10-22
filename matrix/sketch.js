@@ -12,7 +12,7 @@ function setup() {
 
     stream.generateSymbols(x,random(-1000,0));
     streams.push(stream);
-    x+=symbolSize+20;
+    x+=symbolSize+15;
 
   }
 
@@ -39,7 +39,7 @@ this.switchInterval=round(random(2,20));
 this.setToRandomSymbol=function(){
   if(frameCount % this.switchInterval==0){
     this.value=String.fromCharCode(
-      27 + round(random(0,100))
+      2309 + round(random(0,100))
     );
   }
 
