@@ -35,7 +35,7 @@ this.y=y;
 this.speed=speed;
 this.value;
 this.first=first;
-this.switchInterval=round(random(2,20));
+this.switchInterval=round(random(1,100));
 this.setToRandomSymbol=function(){
   if(frameCount % this.switchInterval==0){
     this.value=String.fromCharCode(
@@ -70,7 +70,7 @@ if(this.y>=height){
 function Stream (){
   this.symbols=[];
   this.totalSymbols=round(random(5,50));
-  this.speed=random(1,10);
+  this.speed=random(1,8);
   this.generateSymbols=function(x,y){
     var first=round(random(0,4))==1;
     for(var i=0;i<=this.totalSymbols;i++){
