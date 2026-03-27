@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scene setup
     const scene = new THREE.Scene();
-    
+
     // Camera setup
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
     camera.position.set(0, 2, 8);
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
-    
+
     const directionalLight = new THREE.DirectionalLight(0x00f0ff, 1);
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Create Computer Monitor Group
     const computerGroup = new THREE.Group();
+    computerGroup.position.x = 1.8; // Adjusted further right to balance width
 
     // Monitor Base
     const baseGeo = new THREE.CylinderGeometry(0.8, 1, 0.1, 32);
@@ -46,15 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
     computerGroup.add(stand);
 
     // Monitor Casing (Back)
-    const casingGeo = new THREE.BoxGeometry(4.5, 3.2, 0.4);
+    const casingGeo = new THREE.BoxGeometry(7.5, 3.5, 0.4); // Ultra-wide width
     const casing = new THREE.Mesh(casingGeo, baseMat);
     casing.position.y = 0.5;
     casing.position.z = -0.2;
     computerGroup.add(casing);
 
     // Monitor Screen
-    const screenGeo = new THREE.BoxGeometry(4.2, 2.9, 0.1);
-    const screenMat = new THREE.MeshStandardMaterial({ 
+    const screenGeo = new THREE.BoxGeometry(7.2, 3.2, 0.1);
+    const screenMat = new THREE.MeshStandardMaterial({
         color: 0x0a0a0f,
         roughness: 0.2,
         metalness: 0.8,
@@ -78,19 +79,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Floating Skill Logos Group
     const skillsGroup = new THREE.Group();
-    skillsGroup.position.set(0, 0.5, 0.5);
+    skillsGroup.position.set(1.8, 0.5, 0.5); // Matched right shift
 
     // Orbiting particles background
     const particlesGeo = new THREE.BufferGeometry();
     const particleCount = 100;
     const posArray = new Float32Array(particleCount * 3);
-    for(let i = 0; i < particleCount * 3; i+=3) {
+    for (let i = 0; i < particleCount * 3; i += 3) {
         const radius = 1.2 + Math.random() * 0.3;
         const theta = Math.random() * Math.PI * 2;
         const phi = Math.acos((Math.random() * 2) - 1);
         posArray[i] = radius * Math.sin(phi) * Math.cos(theta);
-        posArray[i+1] = radius * Math.sin(phi) * Math.sin(theta);
-        posArray[i+2] = radius * Math.cos(phi);
+        posArray[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
+        posArray[i + 2] = radius * Math.cos(phi);
     }
     particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     const particlesMat = new THREE.PointsMaterial({
@@ -126,20 +127,20 @@ document.addEventListener('DOMContentLoaded', () => {
         textureLoader.load(url, (texture) => {
             const material = new THREE.SpriteMaterial({ map: texture, transparent: true });
             const sprite = new THREE.Sprite(material);
-            
+
             // Randomly initialize orbit stats
             const radius = 0.8 + Math.random() * 0.6;
             const yOffset = (Math.random() - 0.5) * 1.5;
             const speed = 0.01 + Math.random() * 0.01;
             const angle = Math.random() * Math.PI * 2;
-            
+
             sprite.position.x = Math.cos(angle) * radius;
             sprite.position.y = yOffset;
             sprite.position.z = Math.sin(angle) * radius;
-            
+
             // Default scale
             sprite.scale.set(0.3, 0.3, 0.3);
-            
+
             skillSprites.push({
                 sprite: sprite,
                 radius: radius,
@@ -148,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 speed: speed,
                 timeOffset: Math.random() * 10
             });
-            
+
             skillsGroup.add(sprite);
         });
     });
@@ -173,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetY = 0;
     const halfX = window.innerWidth / 2;
     const halfY = window.innerHeight / 2;
-    
+
     document.addEventListener('mousemove', (e) => {
         mouseX = (e.clientX - halfX);
         mouseY = (e.clientY - halfY);
@@ -184,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animate);
 
         time += 0.01;
-        
+
         // Rotate particles background
         particlesMesh.rotation.y += 0.002;
         particlesMesh.rotation.x += 0.001;
@@ -207,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         targetY = mouseY * 0.001;
         computerGroup.rotation.y += 0.05 * (targetX - computerGroup.rotation.y);
         computerGroup.rotation.x += 0.05 * (targetY - computerGroup.rotation.x);
-        
+
         // Tilt the skills group slightly too for depth
         skillsGroup.rotation.y += 0.05 * (targetX * 1.5 - skillsGroup.rotation.y);
 
