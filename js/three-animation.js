@@ -1,4 +1,17 @@
-// Update monitor screen and casing dimensions
+const monitorScreenWidth = 6.2;  // Monitor screen width in inches
+const monitorScreenHeight = 3;  // Monitor screen height in inches
 
-const monitorScreen = new THREE.BoxGeometry(6.5, 3.5, 0.4);
-const casing = new THREE.BoxGeometry(6.2, 3, 0.1);
+const casingWidth = 6.5;  // Casing width in inches
+const casingHeight = 3.5;  // Casing height in inches
+
+// Animation-specific code here
+
+function initAnimation() {
+    // Initialization logic here
+}
+
+function updateAnimation() {
+    // Animation update logic here
+}
+
+initAnimation();
