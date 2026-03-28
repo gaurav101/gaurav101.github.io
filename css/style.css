@@ -348,6 +348,7 @@ ul {
 .hero-canvas-container {
     flex: 1;
     height: 500px;
+    minWidth:600px;
     position: relative;
     display: flex;
     justify-content: center;
