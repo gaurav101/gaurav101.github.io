@@ -1,6 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('canvas-container');
-    if (!container || typeof THREE === 'undefined') return;
+const monitorScreenWidth = 6.2;  // Monitor screen width in inches
+const monitorScreenHeight = 3;  // Monitor screen height in inches
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -9,11 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
     camera.position.set(0, 2, 8);
 
-    // Renderer setup
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    container.appendChild(renderer.domElement);
+// Animation-specific code here
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -23,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
 
-    const purpleLight = new THREE.PointLight(0x7000ff, 2, 10);
-    purpleLight.position.set(-5, 0, 5);
-    scene.add(purpleLight);
+function updateAnimation() {
+    // Animation update logic here
+}
 
     // Create Computer Monitor Group
     const computerGroup = new THREE.Group();
