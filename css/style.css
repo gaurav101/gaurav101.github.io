@@ -45,6 +45,21 @@ body {
     overflow-x: hidden;
 }
 
+#fixed-canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+main, header, footer, nav {
+    position: relative;
+    z-index: 1;
+}
+
 h1, h2, h3, h4, .logo-text {
     font-family: var(--font-heading);
     color: var(--text-primary);
@@ -342,13 +357,12 @@ ul {
 
 .hero-content {
     flex: 1;
-    max-width: 900px;
+    max-width: 600px;
 }
 
 .hero-canvas-container {
     flex: 1;
-    height: 600px;
-    minWidth:600px;
+    height: 500px;
     position: relative;
     display: flex;
     justify-content: center;
