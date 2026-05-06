@@ -80,7 +80,7 @@ function loadFromFile(file) {
  *
  * @example
  * // Load from URL
- * const img = await loadImage('https://example.com/photo.jpg');
+ * const img = await loadImage('<image url string>');
  *
  * @example
  * // Load from File input
@@ -99,7 +99,7 @@ async function loadImage(source) {
   return Promise.reject(
     new TypeError(
       `LuminaJS [loader]: Invalid source type "${typeof source}". ` +
-        `Expected a URL string or a File object.`
+      `Expected a URL string or a File object.`
     )
   );
 }
@@ -491,11 +491,10 @@ function contrast(imageData, level = 0) {
   const len = data.length;
 
   // Factor calculation formula
-  // See: https://www.dfstudios.co.uk/articles/programming/image-algorithms-part-4-contrast-adjustment/
   const factor = (259 * (level + 255)) / (255 * (259 - level));
 
   for (let i = 0; i < len; i += 4) {
-    data[i]     = clamp(factor * (data[i]     - 128) + 128, 0, 255); // R
+    data[i] = clamp(factor * (data[i] - 128) + 128, 0, 255); // R
     data[i + 1] = clamp(factor * (data[i + 1] - 128) + 128, 0, 255); // G
     data[i + 2] = clamp(factor * (data[i + 2] - 128) + 128, 0, 255); // B
   }
@@ -794,7 +793,9 @@ function gaussianBlur(imageData, sigma = 2) {
  * @param {Object} [options={}] - Customization options.
  * @param {number} [options.x=10] - X coordinate for the text.
  * @param {number} [options.y=10] - Y coordinate for the text.
- * @param {string} [options.font='24px Arial'] - CSS font string.
+ * @param {number} [options.fontSize=24] - Font size in pixels.
+ * @param {string} [options.fontFace='Arial'] - Font family name.
+ * @param {string} [options.font='24px Arial'] - CSS font string (overrides fontSize/fontFace).
  * @param {string} [options.color='rgba(255, 255, 255, 0.5)'] - CSS color string.
  * @param {CanvasTextAlign} [options.align='left'] - Text alignment ('left', 'center', 'right', 'start', 'end').
  * @param {CanvasTextBaseline} [options.baseline='top'] - Text baseline ('top', 'hanging', 'middle', 'alphabetic', 'ideographic', 'bottom').
@@ -807,7 +808,9 @@ function watermark(imageData, text, options = {}) {
   const {
     x = 10,
     y = 10,
-    font = '24px Arial',
+    fontSize = 24,
+    fontFace = 'Arial',
+    font = `${fontSize}px ${fontFace}`,
     color = 'rgba(255, 255, 255, 0.5)',
     align = 'left',
     baseline = 'top'
@@ -982,4 +985,269 @@ const edgeDetection = (imageData) => {
     return imageData;
 };
 
-export { applyConvolution, ascii, backgroundBlur, blur, brightness, canvasToBlob, clamp, contrast, crop, edgeDetection, emboss, gaussianBlur, getPixelData, getResizedImageData, grayscale, isImageFile, loadImage, putPixelData, resize, sepia, sharpen, watermark };
+/**
+ * @fileoverview LuminaJS Core - Chainable API
+ * Provides a premium, fluent interface for image processing.
+ */
+
+class Lumina {
+  /**
+   * @param {string|File|HTMLImageElement|HTMLCanvasElement|ImageData} source - The image source.
+   */
+  constructor(source) {
+    /** @type {string|File|HTMLImageElement|HTMLCanvasElement|ImageData} */
+    this.source = source;
+    /** @type {Array<{fn: Function, args: any[]}>} */
+    this.operations = [];
+  }
+
+  /**
+   * Internal method to add an operation to the queue.
+   * @param {Function} fn
+   * @param {any[]} args
+   * @private
+   */
+  _addOp(fn, ...args) {
+    this.operations.push({ fn, args });
+    return this;
+  }
+
+  // --- Filter Methods ---
+
+  /** @returns {this} */
+  grayscale() {
+    return this._addOp(grayscale);
+  }
+
+  /** @param {number} level - Brightness level. @returns {this} */
+  brightness(level) {
+    return this._addOp(brightness, level);
+  }
+
+  /** @param {number} level - Contrast level. @returns {this} */
+  contrast(level) {
+    return this._addOp(contrast, level);
+  }
+
+  /** @returns {this} */
+  sepia() {
+    return this._addOp(sepia);
+  }
+
+  /** @param {any} [options] - ASCII options. @returns {this} */
+  ascii(options = {}) {
+    return this._addOp(ascii, options);
+  }
+
+  /** @param {number} radius - Blur radius. @returns {this} */
+  blur(radius) {
+    return this._addOp(blur, radius);
+  }
+
+  /** @param {number} radius - Gaussian blur radius. @returns {this} */
+  gaussianBlur(radius) {
+    return this._addOp(gaussianBlur, radius);
+  }
+
+  /** @param {string} text @param {any} options @returns {this} */
+  watermark(text, options) {
+    return this._addOp(watermark, text, options);
+  }
+
+  /** @param {any} options @returns {this} */
+  backgroundBlur(options) {
+    return this._addOp(backgroundBlur, options);
+  }
+
+  /** @param {number[]} kernel @param {number} [divisor] @param {number} [offset] @returns {this} */
+  applyConvolution(kernel, divisor, offset) {
+    return this._addOp(applyConvolution, kernel, divisor, offset);
+  }
+
+  /** @returns {this} */
+  sharpen() {
+    return this._addOp(sharpen);
+  }
+
+  /** @returns {this} */
+  emboss() {
+    return this._addOp(emboss);
+  }
+
+  /** @returns {this} */
+  edgeDetection() {
+    return this._addOp(edgeDetection);
+  }
+
+  // --- Transformation Methods ---
+
+  /**
+   * Resizes the image in the chain.
+   * @param {number} width 
+   * @param {number} height 
+   * @returns {this}
+   */
+  resize(width, height) {
+    return this._addOp((/** @type {ImageData} */ imageData, /** @type {number} */ w, /** @type {number} */ h) => {
+      const canvas = document.createElement('canvas');
+      canvas.width = imageData.width;
+      canvas.height = imageData.height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('LuminaJS [chain]: Failed to get canvas context.');
+      ctx.putImageData(imageData, 0, 0);
+
+      const resizedCanvas = resize(canvas, w, h);
+      const resizedCtx = resizedCanvas.getContext('2d');
+      if (!resizedCtx) throw new Error('LuminaJS [chain]: Failed to get resized canvas context.');
+      return resizedCtx.getImageData(0, 0, w, h);
+    }, width, height);
+  }
+
+  /**
+   * Crops the image in the chain.
+   * @param {number} x @param {number} y @param {number} width @param {number} height @returns {this}
+   */
+  crop(x, y, width, height) {
+    return this._addOp((/** @type {ImageData} */ imageData, /** @type {number} */ cx, /** @type {number} */ cy, /** @type {number} */ cw, /** @type {number} */ ch) => {
+      const canvas = document.createElement('canvas');
+      canvas.width = imageData.width;
+      canvas.height = imageData.height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('LuminaJS [chain]: Failed to get canvas context.');
+      ctx.putImageData(imageData, 0, 0);
+
+      const croppedCanvas = crop(canvas, cx, cy, cw, ch);
+      const croppedCtx = croppedCanvas.getContext('2d');
+      if (!croppedCtx) throw new Error('LuminaJS [chain]: Failed to get cropped canvas context.');
+      return croppedCtx.getImageData(0, 0, cw, ch);
+    }, x, y, width, height);
+  }
+
+  // --- Execution Methods ---
+
+  /**
+   * Resolves the source to ImageData.
+   * @private
+   * @returns {Promise<ImageData>}
+   */
+  async _resolveSource() {
+    let currentSource = this.source;
+
+    if (typeof currentSource === 'string' || currentSource instanceof File) {
+      currentSource = await loadImage(currentSource);
+    }
+
+    if (currentSource instanceof HTMLImageElement) {
+      return getPixelData(currentSource).imageData;
+    }
+
+    if (currentSource instanceof HTMLCanvasElement) {
+      const ctx = currentSource.getContext('2d');
+      if (!ctx) throw new Error('LuminaJS [chain]: Failed to get canvas context from source.');
+      return ctx.getImageData(0, 0, currentSource.width, currentSource.height);
+    }
+
+    if (currentSource instanceof ImageData) {
+      return currentSource;
+    }
+
+    throw new Error('LuminaJS [chain]: Unsupported source type.');
+  }
+
+  /**
+   * Executes the chain and returns the final ImageData.
+   * @returns {Promise<ImageData>}
+   */
+  async render() {
+    let imageData = await this._resolveSource();
+
+    for (const op of this.operations) {
+      imageData = await op.fn(imageData, ...op.args);
+    }
+
+    return imageData;
+  }
+
+  /**
+   * Executes the chain and draws the result to a canvas.
+   * @param {HTMLCanvasElement} canvas 
+   * @returns {Promise<HTMLCanvasElement>}
+   */
+  async toCanvas(canvas) {
+    const imageData = await this.render();
+    canvas.width = imageData.width;
+    canvas.height = imageData.height;
+    putPixelData(canvas, imageData);
+    return canvas;
+  }
+
+  /**
+   * Executes the chain and returns a Blob.
+   * @param {string} [mimeType='image/png']
+   * @param {number} [quality=0.92]
+   * @returns {Promise<Blob>}
+   */
+  async toBlob(mimeType = 'image/png', quality = 0.92) {
+    const imageData = await this.render();
+    const canvas = document.createElement('canvas');
+    canvas.width = imageData.width;
+    canvas.height = imageData.height;
+    putPixelData(canvas, imageData);
+    return canvasToBlob(canvas, mimeType, quality);
+  }
+
+  /**
+   * Executes the chain and returns a Data URL.
+   * @param {string} [mimeType='image/png']
+   * @param {number} [quality=0.92]
+   * @returns {Promise<string>}
+   */
+  async toDataURL(mimeType = 'image/png', quality = 0.92) {
+    const imageData = await this.render();
+    const canvas = document.createElement('canvas');
+    canvas.width = imageData.width;
+    canvas.height = imageData.height;
+    putPixelData(canvas, imageData);
+    return canvas.toDataURL(mimeType, quality);
+  }
+
+  /**
+   * Executes the chain and displays the result in an HTML element.
+   * Supports <img> (via src) and <canvas> (via drawing).
+   * @param {string|HTMLElement} elementOrId - The target element or its ID.
+   * @returns {Promise<HTMLElement>}
+   */
+  async toHtmlElement(elementOrId) {
+    const el = typeof elementOrId === 'string' ? document.getElementById(elementOrId) : elementOrId;
+    if (!el) {
+      throw new Error(`LuminaJS [chain]: Target element not found: "${elementOrId}"`);
+    }
+
+    if (el instanceof HTMLImageElement) {
+      el.src = await this.toDataURL();
+    } else if (el instanceof HTMLCanvasElement) {
+      await this.toCanvas(el);
+    } else {
+      throw new Error('LuminaJS [chain]: toHtmlElement only supports <img> and <canvas> elements.');
+    }
+
+    return el;
+  }
+}
+
+/**
+ * @fileoverview LuminaJS Main Entry Point
+ * Exports all modular components for the LuminaJS image processing library.
+ */
+
+
+/**
+ * Initiates a chainable processing sequence.
+ * @param {string|File|HTMLImageElement|HTMLCanvasElement|ImageData} source - The image source.
+ * @returns {Lumina} A new Lumina chain instance.
+ */
+function lumina(source) {
+  return new Lumina(source);
+}
+
+export { Lumina, applyConvolution, ascii, backgroundBlur, blur, brightness, canvasToBlob, clamp, contrast, crop, edgeDetection, emboss, gaussianBlur, getPixelData, getResizedImageData, grayscale, isImageFile, loadImage, lumina, putPixelData, resize, sepia, sharpen, watermark };

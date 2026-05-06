@@ -13,7 +13,7 @@
  *
  * @example
  * // Load from URL
- * const img = await loadImage('https://example.com/photo.jpg');
+ * const img = await loadImage('<image url string>');
  *
  * @example
  * // Load from File input
