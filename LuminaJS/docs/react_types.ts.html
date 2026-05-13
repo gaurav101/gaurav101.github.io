@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>react/types.ts - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h2><a href="https://gaurav101.github.io/LuminaJS/" target="_blank" class="menu-item" id="demo" >Demo</a></h2><h3>Classes</h3><ul><li><a href="Lumina_Lumina.html">Lumina</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#ImageAreaSelector">ImageAreaSelector</a></li><li><a href="global.html#ImageCropper">ImageCropper</a></li><li><a href="global.html#ImageCropperExample">ImageCropperExample</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#LuminaCanvas">LuminaCanvas</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#applyEditingOptions">applyEditingOptions</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#lumina">lumina</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#useLumina">useLumina</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">react/types.ts</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { type Lumina } from '../index.js';
+
+export interface ImageEditingOptions {
+  grayscale?: boolean;
+  brightness?: number;
+  contrast?: number;
+  sepia?: boolean;
+  ascii?: boolean | Record&lt;string, unknown>;
+  blur?: number;
+  gaussianBlur?: number;
+  watermark?: { text: string; options?: Record&lt;string, unknown> };
+  backgroundBlur?: Record&lt;string, unknown>;
+  sharpen?: boolean;
+  emboss?: boolean;
+  edgeDetection?: boolean;
+  resize?: { width: number; height: number };
+  crop?: { x: number; y: number; width: number; height: number };
+}
+
+/**
+ * Applies the provided ImageEditingOptions to a Lumina instance.
+ * @param chain The Lumina chain instance
+ * @param options The options to apply
+ * @returns The modified Lumina chain instance
+ */
+export function applyEditingOptions(
+  chain: Lumina,
+  options: ImageEditingOptions,
+): Lumina {
+  let c = chain;
+
+  if (options.grayscale) c = c.grayscale();
+  if (options.brightness !== undefined) c = c.brightness(options.brightness);
+  if (options.contrast !== undefined) c = c.contrast(options.contrast);
+  if (options.sepia) c = c.sepia();
+  if (options.ascii) {
+    c = c.ascii(typeof options.ascii === 'boolean' ? {} : options.ascii);
+  }
+  if (options.blur !== undefined) c = c.blur(options.blur);
+  if (options.gaussianBlur !== undefined)
+    c = c.gaussianBlur(options.gaussianBlur);
+  if (options.watermark) {
+    c = c.watermark(options.watermark.text, options.watermark.options);
+  }
+  if (options.backgroundBlur) {
+    c = c.backgroundBlur(options.backgroundBlur);
+  }
+  if (options.sharpen) c = c.sharpen();
+  if (options.emboss) c = c.emboss();
+  if (options.edgeDetection) c = c.edgeDetection();
+  if (options.resize) {
+    c = c.resize(options.resize.width, options.resize.height);
+  }
+  if (options.crop) {
+    c = c.crop(
+      options.crop.x,
+      options.crop.y,
+      options.crop.width,
+      options.crop.height,
+    );
+  }
+
+  return c;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed May 13 2026 15:57:38 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

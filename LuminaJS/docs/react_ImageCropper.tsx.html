@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>react/ImageCropper.tsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h2><a href="https://gaurav101.github.io/LuminaJS/" target="_blank" class="menu-item" id="demo" >Demo</a></h2><h3>Classes</h3><ul><li><a href="Lumina_Lumina.html">Lumina</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#ImageAreaSelector">ImageAreaSelector</a></li><li><a href="global.html#ImageCropper">ImageCropper</a></li><li><a href="global.html#ImageCropperExample">ImageCropperExample</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#LuminaCanvas">LuminaCanvas</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#applyEditingOptions">applyEditingOptions</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#lumina">lumina</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#useLumina">useLumina</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">react/ImageCropper.tsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useCallback, useEffect, useMemo } from 'react';
+import { lumina } from '../index.js';
+import { LuminaCanvas } from './LuminaCanvas';
+import { ImageAreaSelector, type CropArea } from './ImageAreaSelector';
+
+export interface ImageCropperProps {
+  src: string | File | HTMLImageElement | HTMLCanvasElement | ImageData | null;
+  onCropComplete?: (croppedImage: Blob | string) => void;
+  onError?: (error: Error) => void;
+  aspectRatio?: number;
+  outputFormat?: 'blob' | 'dataUrl';
+  maxWidth?: number;
+  maxHeight?: number;
+  showPreview?: boolean;
+  allowReset?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
+
+  // Button customization and callbacks
+  applyButtonClassName?: string;
+  applyButtonStyle?: React.CSSProperties;
+  resetButtonClassName?: string;
+  resetButtonStyle?: React.CSSProperties;
+
+  // Button position options
+  buttonPosition?:
+    | 'top-left'
+    | 'top-right'
+    | 'top-center'
+    | 'bottom-left'
+    | 'bottom-center'
+    | 'bottom-right';
+
+  // Optional callbacks invoked when user clicks Apply or Reset.
+  // If the callback returns false (or a Promise that resolves to false),
+  // the component will abort the default behavior.
+  onApply?: (crop: CropArea) => boolean | void | Promise&lt;boolean | void>;
+  onReset?: () => boolean | void | Promise&lt;boolean | void>;
+}
+
+/**
+ * ImageCropper - A complete image cropping interface with explicit apply.
+ *
+ * Combines the `ImageAreaSelector` for interactive crop area selection with
+ * `LuminaCanvas` for rendering the applied crop in the same component after the user clicks Apply.
+ *
+ * Props summary (not exhaustive):
+ * - src: Image source (string | File | HTMLImageElement | HTMLCanvasElement | ImageData | null)
+ * - onCropComplete: Callback when crop is finalized (receives Blob or DataURL)
+ * - onError: Callback for processing errors
+ * - aspectRatio: Optional aspect ratio to enforce (width / height)
+ * - outputFormat: 'blob' | 'dataUrl'
+ * - allowReset: show reset button
+ * - applyButtonClassName / applyButtonStyle: Customize the Apply button class/style
+ * - resetButtonClassName / resetButtonStyle: Customize the Reset button class/style
+ * - onApply / onReset: Optional callbacks fired when Apply or Reset are clicked. If the callback returns false (or a Promise that resolves to false), the default behavior is aborted.
+ *
+ * @example
+ * ```tsx
+ * &lt;ImageCropper
+ *   src="photo.jpg"
+ *   aspectRatio={16 / 9}
+ *   outputFormat="blob"
+ *   applyButtonClassName="primary-btn"
+ *   resetButtonStyle={{ backgroundColor: '#fff' }}
+ *   onApply={(crop) =>  validate crop or return false to prevent default }
+ *   onReset={() => /* do custom reset; return false to prevent default }
+ * />
+ * ```
+ */
+export const ImageCropper: React.FC&lt;ImageCropperProps> = ({
+  src,
+  onCropComplete,
+  onError,
+  aspectRatio,
+  outputFormat = 'blob',
+  maxWidth = 600,
+  maxHeight = 400,
+  allowReset = true,
+  className,
+  style,
+  // button customization
+  applyButtonClassName,
+  applyButtonStyle,
+  resetButtonClassName,
+  resetButtonStyle,
+  // button position (default top-left)
+  buttonPosition = 'top-left',
+  // optional callbacks
+  onApply,
+  onReset,
+}) => {
+  const [isCropping, setIsCropping] = useState(false);
+  const [appliedPreview, setAppliedPreview] = useState&lt;{
+    source: ImageCropperProps['src'];
+    src: string;
+  } | null>(null);
+  const [selectedCropState, setSelectedCropState] = useState&lt;{
+    source: ImageCropperProps['src'];
+    crop: CropArea;
+  } | null>(null);
+  const [selectorVersion, setSelectorVersion] = useState(0);
+  const appliedPreviewSrc =
+    appliedPreview?.source === src ? appliedPreview.src : null;
+  const selectedCrop =
+    selectedCropState?.source === src ? selectedCropState.crop : null;
+
+  // Convert File to URL for ImageAreaSelector
+  const imageSrc = useMemo(() => {
+    if (typeof src === 'string') return src;
+    if (src instanceof File) return URL.createObjectURL(src);
+    return undefined;
+  }, [src]);
+
+  useEffect(() => {
+    return () => {
+      if (imageSrc &amp;&amp; src instanceof File) {
+        URL.revokeObjectURL(imageSrc);
+      }
+    };
+  }, [imageSrc, src]);
+
+  useEffect(() => {
+    return () => {
+      if (appliedPreview?.src.startsWith('blob:')) {
+        URL.revokeObjectURL(appliedPreview.src);
+      }
+    };
+  }, [appliedPreview]);
+
+  const handleCropChange = useCallback(
+    (crop: CropArea) => {
+      setSelectedCropState({ source: src, crop });
+      setAppliedPreview(null);
+    },
+    [src],
+  );
+
+  const handleCropSelectionComplete = useCallback(
+    (crop: CropArea) => {
+      setSelectedCropState({ source: src, crop });
+    },
+    [src],
+  );
+
+  const handleApplyCrop = useCallback(async () => {
+    if (
+      !selectedCrop ||
+      selectedCrop.width === 0 ||
+      selectedCrop.height === 0
+    ) {
+      onError?.(new Error('Please select a crop area'));
+      return;
+    }
+
+    if (!src) {
+      onError?.(new Error('No source image provided'));
+      return;
+    }
+
+    // If consumer provided an onApply callback, call it first. If it returns false, abort default behavior.
+    if (onApply) {
+      try {
+        const proceed = await onApply(selectedCrop);
+        if (proceed === false) return;
+      } catch (err) {
+        const error = err instanceof Error ? err : new Error(String(err));
+        onError?.(error);
+        return;
+      }
+    }
+
+    setIsCropping(true);
+
+    try {
+      const chain = lumina(src).crop(
+        selectedCrop.x,
+        selectedCrop.y,
+        selectedCrop.width,
+        selectedCrop.height,
+      );
+
+      if (outputFormat === 'blob') {
+        const blob = await chain.toBlob();
+        if (blob) {
+          setAppliedPreview({ source: src, src: URL.createObjectURL(blob) });
+          onCropComplete?.(blob);
+        } else {
+          throw new Error('Failed to generate cropped blob.');
+        }
+      } else {
+        const dataUrl = await chain.toDataURL();
+        setAppliedPreview({ source: src, src: dataUrl });
+        onCropComplete?.(dataUrl);
+      }
+    } catch (err) {
+      const error = err instanceof Error ? err : new Error(String(err));
+      onError?.(error);
+    } finally {
+      setIsCropping(false);
+    }
+  }, [onError, onCropComplete, outputFormat, selectedCrop, src, onApply]);
+
+  const handleReset = useCallback(async () => {
+    if (onReset) {
+      try {
+        const proceed = await onReset();
+        if (proceed === false) return;
+      } catch (err) {
+        const error = err instanceof Error ? err : new Error(String(err));
+        onError?.(error);
+        return;
+      }
+    }
+
+    setAppliedPreview(null);
+    setSelectedCropState(null);
+    setSelectorVersion((version) => version + 1);
+  }, [onReset, onError]);
+
+  const handleProcessError = (error: Error) => {
+    onError?.(error);
+  };
+
+  // Compute button container style based on buttonPosition prop
+  const buttonContainerStyle = useMemo(() => {
+    const base: React.CSSProperties = {
+      position: 'absolute',
+      display: 'flex',
+      gap: '8px',
+      zIndex: 1001,
+      alignItems: 'center',
+    };
+    switch (buttonPosition) {
+      case 'top-left':
+        return { ...base, top: '12px', left: '12px' };
+      case 'top-right':
+        return { ...base, top: '12px', right: '12px' };
+      case 'top-center':
+        return {
+          ...base,
+          top: '12px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+        };
+      case 'bottom-left':
+        return { ...base, bottom: '12px', left: '12px' };
+      case 'bottom-center':
+        return {
+          ...base,
+          bottom: '12px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+        };
+      case 'bottom-right':
+        return { ...base, bottom: '12px', right: '12px' };
+      default:
+        return { ...base, top: '12px', left: '12px' };
+    }
+  }, [buttonPosition]);
+
+  return (
+    &lt;div
+      className={className}
+      style={{
+        padding: '16px',
+        borderRadius: '8px',
+        ...style,
+      }}
+    >
+      &lt;div
+        style={{
+          position: 'relative',
+          maxWidth: maxWidth,
+          maxHeight: maxHeight,
+          borderRadius: '6px',
+          overflow: 'hidden',
+          border: '1px solid #ddd',
+        }}
+      >
+        {appliedPreviewSrc ? (
+          &lt;LuminaCanvas
+            source={appliedPreviewSrc}
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'block',
+            }}
+            onProcessError={handleProcessError}
+          />
+        ) : (
+          imageSrc &amp;&amp; (
+            &lt;ImageAreaSelector
+              key={`${imageSrc}-${selectorVersion}`}
+              src={imageSrc}
+              aspect={aspectRatio}
+              onCropChange={handleCropChange}
+              onCropComplete={handleCropSelectionComplete}
+              lineColor="#0066cc"
+              overlayOpacity={0.6}
+              overlayControls={() => (
+                &lt;div style={{ display: 'flex', gap: 8 }}>
+                  &lt;button
+                    type="button"
+                    onClick={handleApplyCrop}
+                    disabled={isCropping}
+                    className={applyButtonClassName}
+                    style={{
+                      padding: '8px 12px',
+                      backgroundColor: '#0066cc',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: isCropping ? 'not-allowed' : 'pointer',
+                      fontSize: '13px',
+                      fontWeight: 500,
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)',
+                      ...applyButtonStyle,
+                    }}
+                  >
+                    {isCropping ? 'Processing...' : 'Apply Crop'}
+                  &lt;/button>
+
+                  {allowReset &amp;&amp; (
+                    &lt;button
+                      type="button"
+                      onClick={handleReset}
+                      disabled={isCropping}
+                      className={resetButtonClassName}
+                      style={{
+                        padding: '8px 12px',
+                        backgroundColor: '#fff',
+                        color: '#333',
+                        border: '1px solid #ddd',
+                        borderRadius: '4px',
+                        cursor: isCropping ? 'not-allowed' : 'pointer',
+                        fontSize: '13px',
+                        fontWeight: 500,
+                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)',
+                        ...resetButtonStyle,
+                      }}
+                    >
+                      Reset
+                    &lt;/button>
+                  )}
+                &lt;/div>
+              )}
+            />
+          )
+        )}
+
+        {isCropping &amp;&amp; (
+          &lt;div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: 'rgba(255, 255, 255, 0.75)',
+              color: '#333',
+              fontSize: '14px',
+              fontWeight: 500,
+            }}
+          >
+            Processing...
+          &lt;/div>
+        )}
+
+        {allowReset &amp;&amp; appliedPreviewSrc &amp;&amp; !isCropping &amp;&amp; (
+          &lt;div style={buttonContainerStyle}>
+            &lt;button
+              type="button"
+              onClick={handleReset}
+              className={resetButtonClassName}
+              style={{
+                padding: '8px 12px',
+                backgroundColor: '#fff',
+                color: '#333',
+                border: '1px solid #ddd',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '13px',
+                fontWeight: 500,
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)',
+                ...resetButtonStyle,
+              }}
+            >
+              Reset
+            &lt;/button>
+          &lt;/div>
+        )}
+      &lt;/div>
+    &lt;/div>
+  );
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed May 13 2026 15:57:38 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

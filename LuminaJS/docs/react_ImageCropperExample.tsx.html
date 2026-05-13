@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>react/ImageCropperExample.tsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h2><a href="https://gaurav101.github.io/LuminaJS/" target="_blank" class="menu-item" id="demo" >Demo</a></h2><h3>Classes</h3><ul><li><a href="Lumina_Lumina.html">Lumina</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#ImageAreaSelector">ImageAreaSelector</a></li><li><a href="global.html#ImageCropper">ImageCropper</a></li><li><a href="global.html#ImageCropperExample">ImageCropperExample</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#LuminaCanvas">LuminaCanvas</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#applyEditingOptions">applyEditingOptions</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#lumina">lumina</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#useLumina">useLumina</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">react/ImageCropperExample.tsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useRef } from 'react';
+import { ImageCropper } from './index';
+
+/**
+ * Complete image cropper example demonstrating:
+ * - Basic cropping with ImageCropper component
+ * - Custom aspect ratios
+ * - Handling the cropped result
+ * - Combining ImageAreaSelector with useLumina for custom workflows
+ */
+
+export function ImageCropperExample() {
+  const [imageSrc, setImageSrc] = useState&lt;string>('');
+  const [croppedResult, setCroppedResult] = useState&lt;string | Blob | null>(
+    null,
+  );
+  const fileInputRef = useRef&lt;HTMLInputElement>(null);
+
+  const handleFileSelect = (e: React.ChangeEvent&lt;HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file &amp;&amp; file.type.startsWith('image/')) {
+      setImageSrc(URL.createObjectURL(file));
+      setCroppedResult(null);
+    }
+  };
+
+  const handleCropComplete = (croppedBlob: Blob | string) => {
+    setCroppedResult(croppedBlob);
+    console.log('Crop completed:', croppedBlob);
+  };
+
+  const handleError = (error: Error) => {
+    console.error('Cropping error:', error.message);
+    alert(`Error: ${error.message}`);
+  };
+
+  const downloadCroppedImage = () => {
+    if (!croppedResult) return;
+
+    const link = document.createElement('a');
+    if (croppedResult instanceof Blob) {
+      link.href = URL.createObjectURL(croppedResult);
+    } else {
+      link.href = croppedResult;
+    }
+    link.download = 'cropped-image.png';
+    link.click();
+  };
+
+  return (
+    &lt;div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
+      &lt;h1>Image Cropper Tool&lt;/h1>
+
+      {/* File Input */}
+      &lt;div style={{ marginBottom: '20px' }}>
+        &lt;input
+          type="file"
+          ref={fileInputRef}
+          accept="image/*"
+          onChange={handleFileSelect}
+          style={{ display: 'none' }}
+        />
+        &lt;button
+          onClick={() => fileInputRef.current?.click()}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#0066cc',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontSize: '14px',
+            fontWeight: '500',
+          }}
+        >
+          {imageSrc ? 'Select Different Image' : 'Select Image'}
+        &lt;/button>
+      &lt;/div>
+
+      {/* Cropper Component */}
+      {imageSrc &amp;&amp; (
+        &lt;ImageCropper
+          src={imageSrc}
+          aspectRatio={16 / 9}
+          outputFormat="blob"
+          onCropComplete={handleCropComplete}
+          onError={handleError}
+          maxWidth={700}
+          maxHeight={500}
+          showPreview={true}
+          allowReset={true}
+          style={{ marginBottom: '20px' }}
+        />
+      )}
+
+      {/* Cropped Result */}
+      {croppedResult &amp;&amp; (
+        &lt;div
+          style={{
+            padding: '20px',
+            borderRadius: '8px',
+            marginTop: '20px',
+          }}
+        >
+          &lt;h2>Cropped Result&lt;/h2>
+          &lt;div
+            style={{
+              display: 'flex',
+              gap: '20px',
+              alignItems: 'flex-start',
+              flexWrap: 'wrap',
+            }}
+          >
+            &lt;img
+              src={
+                croppedResult instanceof Blob
+                  ? URL.createObjectURL(croppedResult)
+                  : croppedResult
+              }
+              alt="Cropped"
+              style={{
+                maxWidth: '400px',
+                maxHeight: '300px',
+                borderRadius: '4px',
+                border: '1px solid #ddd',
+              }}
+            />
+            &lt;div>
+              &lt;p>
+                &lt;strong>Format:&lt;/strong>{' '}
+                {croppedResult instanceof Blob ? 'Blob' : 'Data URL'}
+              &lt;/p>
+              &lt;p>
+                &lt;strong>Size:&lt;/strong>{' '}
+                {croppedResult instanceof Blob
+                  ? `${(croppedResult.size / 1024).toFixed(2)} KB`
+                  : 'Data URL'}
+              &lt;/p>
+              &lt;button
+                onClick={downloadCroppedImage}
+                style={{
+                  padding: '10px 20px',
+                  backgroundColor: '#28a745',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                }}
+              >
+                Download Cropped Image
+              &lt;/button>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      )}
+    &lt;/div>
+  );
+}
+
+export default ImageCropperExample;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed May 13 2026 15:57:38 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

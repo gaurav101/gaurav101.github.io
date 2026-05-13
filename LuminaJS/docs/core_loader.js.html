@@ -31,7 +31,7 @@
     <input type="text" id="nav-search" placeholder="Search" />
     
     
-    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h2><a href="https://gaurav101.github.io/LuminaJS/" target="_blank" class="menu-item" id="demo" >Demo</a></h2><h3>Classes</h3><ul><li><a href="Lumina_Lumina.html">Lumina</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#ImageAreaSelector">ImageAreaSelector</a></li><li><a href="global.html#ImageCropper">ImageCropper</a></li><li><a href="global.html#ImageCropperExample">ImageCropperExample</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#LuminaCanvas">LuminaCanvas</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#applyEditingOptions">applyEditingOptions</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#lumina">lumina</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#useLumina">useLumina</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
     
 </nav>
 
@@ -70,7 +70,11 @@ function loadFromURL(url) {
 
     img.onload = () => resolve(img);
     img.onerror = () =>
-      reject(new Error(`LuminaJS [loader]: Failed to load image from URL — "${url}"`));
+      reject(
+        new Error(
+          `LuminaJS [loader]: Failed to load image from URL — "${url}"`,
+        ),
+      );
 
     img.src = url;
   });
@@ -90,8 +94,8 @@ function loadFromFile(file) {
   if (!file.type.startsWith('image/')) {
     return Promise.reject(
       new TypeError(
-        `LuminaJS [loader]: Expected an image File, but received MIME type "${file.type}".`
-      )
+        `LuminaJS [loader]: Expected an image File, but received MIME type "${file.type}".`,
+      ),
     );
   }
 
@@ -107,7 +111,11 @@ function loadFromFile(file) {
 
     img.onerror = () => {
       URL.revokeObjectURL(objectURL); // Also release on failure
-      reject(new Error(`LuminaJS [loader]: Failed to load image from File — "${file.name}".`));
+      reject(
+        new Error(
+          `LuminaJS [loader]: Failed to load image from File — "${file.name}".`,
+        ),
+      );
     };
 
     img.src = objectURL;
@@ -129,7 +137,7 @@ function loadFromFile(file) {
  *
  * @example
  * // Load from URL
- * const img = await loadImage('https://example.com/photo.jpg');
+ * const img = await loadImage('&lt;image url string>');
  *
  * @example
  * // Load from File input
@@ -148,8 +156,8 @@ export async function loadImage(source) {
   return Promise.reject(
     new TypeError(
       `LuminaJS [loader]: Invalid source type "${typeof source}". ` +
-        `Expected a URL string or a File object.`
-    )
+        `Expected a URL string or a File object.`,
+    ),
   );
 }
 </code></pre>
@@ -166,7 +174,7 @@ export async function loadImage(source) {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed Apr 29 2026 21:30:29 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed May 13 2026 15:57:38 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

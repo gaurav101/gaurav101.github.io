@@ -31,7 +31,7 @@
     <input type="text" id="nav-search" placeholder="Search" />
     
     
-    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h2><a href="https://gaurav101.github.io/LuminaJS/" target="_blank" class="menu-item" id="demo" >Demo</a></h2><h3>Classes</h3><ul><li><a href="Lumina_Lumina.html">Lumina</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#ImageAreaSelector">ImageAreaSelector</a></li><li><a href="global.html#ImageCropper">ImageCropper</a></li><li><a href="global.html#ImageCropperExample">ImageCropperExample</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#LuminaCanvas">LuminaCanvas</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#applyEditingOptions">applyEditingOptions</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#lumina">lumina</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#useLumina">useLumina</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
     
 </nav>
 
@@ -77,7 +77,9 @@ function createOffscreenCanvas(width, height) {
   });
 
   if (!ctx) {
-    throw new Error('LuminaJS [canvas]: Failed to create offscreen canvas context.');
+    throw new Error(
+      'LuminaJS [canvas]: Failed to create offscreen canvas context.',
+    );
   }
 
   return { canvas, ctx };
@@ -110,7 +112,7 @@ export function getPixelData(image) {
   if (width === 0 || height === 0) {
     throw new Error(
       `LuminaJS [canvas]: Cannot extract pixel data from an image with zero dimensions ` +
-        `(${width}x${height}). Ensure the image is fully loaded before calling getPixelData.`
+        `(${width}x${height}). Ensure the image is fully loaded before calling getPixelData.`,
     );
   }
 
@@ -128,7 +130,7 @@ export function getPixelData(image) {
     throw new Error(
       `LuminaJS [canvas]: Unable to read pixel data — canvas may be tainted by a ` +
         `cross-origin image. Ensure the server sends CORS headers and the image is loaded ` +
-        `with crossOrigin="Anonymous". Original error: ${message}`
+        `with crossOrigin="Anonymous". Original error: ${message}`,
     );
   }
 }
@@ -157,7 +159,7 @@ export function putPixelData(canvas, imageData) {
   if (!ctx) {
     throw new Error(
       `LuminaJS [canvas]: Failed to obtain a 2D context from the provided canvas element. ` +
-        `The canvas may already have a context of a different type (e.g. "webgl").`
+        `The canvas may already have a context of a different type (e.g. "webgl").`,
     );
   }
 
@@ -188,13 +190,13 @@ export function canvasToBlob(canvas, mimeType = 'image/png', quality = 0.92) {
           reject(
             new Error(
               `LuminaJS [canvas]: canvas.toBlob returned null. ` +
-                `The canvas may be empty or the MIME type "${mimeType}" is unsupported.`
-            )
+                `The canvas may be empty or the MIME type "${mimeType}" is unsupported.`,
+            ),
           );
         }
       },
       mimeType,
-      quality
+      quality,
     );
   });
 }
@@ -212,7 +214,9 @@ export function getResizedImageData(image, width, height) {
   const canvas = resize(image, width, height);
   const ctx = canvas.getContext('2d');
   if (!ctx) {
-    throw new Error('LuminaJS [canvas]: Failed to obtain a 2D context from the resized canvas.');
+    throw new Error(
+      'LuminaJS [canvas]: Failed to obtain a 2D context from the resized canvas.',
+    );
   }
   return ctx.getImageData(0, 0, width, height);
 }
@@ -228,7 +232,9 @@ export function getResizedImageData(image, width, height) {
  */
 export function resize(source, width, height) {
   if (width &lt;= 0 || height &lt;= 0) {
-    throw new Error(`LuminaJS [canvas]: Resize dimensions must be positive (${width}x${height}).`);
+    throw new Error(
+      `LuminaJS [canvas]: Resize dimensions must be positive (${width}x${height}).`,
+    );
   }
   const { canvas, ctx } = createOffscreenCanvas(width, height);
   ctx.drawImage(source, 0, 0, width, height);
@@ -248,7 +254,9 @@ export function resize(source, width, height) {
  */
 export function crop(source, x, y, width, height) {
   if (width &lt;= 0 || height &lt;= 0) {
-    throw new Error(`LuminaJS [canvas]: Crop dimensions must be positive (${width}x${height}).`);
+    throw new Error(
+      `LuminaJS [canvas]: Crop dimensions must be positive (${width}x${height}).`,
+    );
   }
   const { canvas, ctx } = createOffscreenCanvas(width, height);
   ctx.drawImage(source, x, y, width, height, 0, 0, width, height);
@@ -268,7 +276,7 @@ export function crop(source, x, y, width, height) {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed Apr 29 2026 21:30:29 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed May 13 2026 15:57:38 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

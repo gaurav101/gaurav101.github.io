@@ -31,7 +31,7 @@
     <input type="text" id="nav-search" placeholder="Search" />
     
     
-    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h2><a href="https://gaurav101.github.io/LuminaJS/" target="_blank" class="menu-item" id="demo" >Demo</a></h2><h3>Classes</h3><ul><li><a href="Lumina_Lumina.html">Lumina</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#ImageAreaSelector">ImageAreaSelector</a></li><li><a href="global.html#ImageCropper">ImageCropper</a></li><li><a href="global.html#ImageCropperExample">ImageCropperExample</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#LuminaCanvas">LuminaCanvas</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#applyEditingOptions">applyEditingOptions</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#lumina">lumina</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#useLumina">useLumina</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
     
 </nav>
 
@@ -142,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_ascii.js.html">filters/ascii.js</a>, <a href="filters_ascii.js.html#line10">line 10</a>
+        <a href="filters_ascii.js.html">filters/ascii.js</a>, <a href="filters_ascii.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -200,6 +200,203 @@
 
 
 
+
+
+
+        
+            
+<h4 class="name" id="ImageAreaSelector"><span class="type-signature type-signature-constant">(constant) </span>ImageAreaSelector<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>ImageAreaSelector - An interactive image cropping tool.</p>
+<p>Displays an image with a draggable selection box to define a crop area.
+The selected crop area can be dragged to another part of the image before applying.
+Constraints applied: image boundaries, optional aspect ratio, and prevents negative dimensions.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="react_ImageAreaSelector.tsx.html">react/ImageAreaSelector.tsx</a>, <a href="react_ImageAreaSelector.tsx.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>ImageAreaSelector - An interactive image cropping tool.</p>
+<p>Displays an image with a draggable selection box to define a crop area.
+The selected crop area can be dragged to another part of the image before applying.
+Constraints applied: image boundaries, optional aspect ratio, and prevents negative dimensions.</p>
+</div>
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>```tsx
+const [crop, setCrop] = useState&lt;CropArea>({ x: 0, y: 0, width: 0, height: 0 });
+
+&lt;ImageAreaSelector
+  src="image.jpg"
+  aspect={16 / 9}
+  lineColor="#00ff00"
+  onCropChange={setCrop}
+/>
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="ImageCropper"><span class="type-signature type-signature-constant">(constant) </span>ImageCropper<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>ImageCropper - A complete image cropping interface with explicit apply.</p>
+<p>Combines the <code>ImageAreaSelector</code> for interactive crop area selection with
+<code>LuminaCanvas</code> for rendering the applied crop in the same component after the user clicks Apply.</p>
+<p>Props summary (not exhaustive):</p>
+<ul>
+<li>src: Image source (string | File | HTMLImageElement | HTMLCanvasElement | ImageData | null)</li>
+<li>onCropComplete: Callback when crop is finalized (receives Blob or DataURL)</li>
+<li>onError: Callback for processing errors</li>
+<li>aspectRatio: Optional aspect ratio to enforce (width / height)</li>
+<li>outputFormat: 'blob' | 'dataUrl'</li>
+<li>allowReset: show reset button</li>
+<li>applyButtonClassName / applyButtonStyle: Customize the Apply button class/style</li>
+<li>resetButtonClassName / resetButtonStyle: Customize the Reset button class/style</li>
+<li>onApply / onReset: Optional callbacks fired when Apply or Reset are clicked. If the callback returns false (or a Promise that resolves to false), the default behavior is aborted.</li>
+</ul></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="react_ImageCropper.tsx.html">react/ImageCropper.tsx</a>, <a href="react_ImageCropper.tsx.html#line41">line 41</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>ImageCropper - A complete image cropping interface with explicit apply.</p>
+<p>Combines the <code>ImageAreaSelector</code> for interactive crop area selection with
+<code>LuminaCanvas</code> for rendering the applied crop in the same component after the user clicks Apply.</p>
+<p>Props summary (not exhaustive):</p>
+<ul>
+<li>src: Image source (string | File | HTMLImageElement | HTMLCanvasElement | ImageData | null)</li>
+<li>onCropComplete: Callback when crop is finalized (receives Blob or DataURL)</li>
+<li>onError: Callback for processing errors</li>
+<li>aspectRatio: Optional aspect ratio to enforce (width / height)</li>
+<li>outputFormat: 'blob' | 'dataUrl'</li>
+<li>allowReset: show reset button</li>
+<li>applyButtonClassName / applyButtonStyle: Customize the Apply button class/style</li>
+<li>resetButtonClassName / resetButtonStyle: Customize the Reset button class/style</li>
+<li>onApply / onReset: Optional callbacks fired when Apply or Reset are clicked. If the callback returns false (or a Promise that resolves to false), the default behavior is aborted.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>```tsx
+&lt;ImageCropper
+  src="photo.jpg"
+  aspectRatio={16 / 9}
+  outputFormat="blob"
+  applyButtonClassName="primary-btn"
+  resetButtonStyle={{ backgroundColor: '#fff' }}
+  onApply={(crop) =>  validate crop or return false to prevent default }
+  onReset={() => /* do custom reset; return false to prevent default }
+/>
+```</code></pre>
 
 
 
@@ -439,6 +636,101 @@
 
         
             
+<h4 class="name" id="LuminaCanvas"><span class="type-signature type-signature-constant">(constant) </span>LuminaCanvas<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p><code>LuminaCanvas</code> - A declarative React component to render LuminaJS processed images on a canvas.</p>
+<p>This component handles the rendering of image transformations directly onto an HTML <code>&lt;canvas&gt;</code>.
+It provides a powerful, prop-driven interface to apply image edits like crop, resize, and various filters.
+You can also access the resulting generated image using the <code>getImage</code> callback prop.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="react_LuminaCanvas.tsx.html">react/LuminaCanvas.tsx</a>, <a href="react_LuminaCanvas.tsx.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p><code>LuminaCanvas</code> - A declarative React component to render LuminaJS processed images on a canvas.</p>
+<p>This component handles the rendering of image transformations directly onto an HTML <code>&lt;canvas&gt;</code>.
+It provides a powerful, prop-driven interface to apply image edits like crop, resize, and various filters.
+You can also access the resulting generated image using the <code>getImage</code> callback prop.</p>
+</div>
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>```tsx
+function App() {
+  const handleImage = (dataUrl) => console.log('Generated Image:', dataUrl);
+
+  return (
+    &lt;LuminaCanvas
+      source="photo.jpg"
+      brightness={20}
+      sepia={true}
+      resize={{ width: 500, height: 500 }}
+      outputType="dataUrl"
+      getImage={handleImage}
+      width={500} // standard canvas attribute
+      height={500} // standard canvas attribute
+    />
+  );
+}
+```</code></pre>
+
+
+
+        
+            
 <h4 class="name" id="applyConvolution"><span class="type-signature type-signature-constant">(constant) </span>applyConvolution<span class="type-signature"></span></h4>
 
 
@@ -454,7 +746,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_convolution.js.html">filters/convolution.js</a>, <a href="filters_convolution.js.html#line8">line 8</a>
+        <a href="filters_convolution.js.html">filters/convolution.js</a>, <a href="filters_convolution.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -518,7 +810,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_edgeDetection.js.html">filters/edgeDetection.js</a>, <a href="filters_edgeDetection.js.html#line6">line 6</a>
+        <a href="filters_edgeDetection.js.html">filters/edgeDetection.js</a>, <a href="filters_edgeDetection.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -578,7 +870,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_emboss.js.html">filters/emboss.js</a>, <a href="filters_emboss.js.html#line6">line 6</a>
+        <a href="filters_emboss.js.html">filters/emboss.js</a>, <a href="filters_emboss.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -638,7 +930,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_sharpen.js.html">filters/sharpen.js</a>, <a href="filters_sharpen.js.html#line6">line 6</a>
+        <a href="filters_sharpen.js.html">filters/sharpen.js</a>, <a href="filters_sharpen.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -695,6 +987,254 @@
 
     
 
+    <h4 class="name" id="ImageCropperExample"><span class="type-signature"></span>ImageCropperExample<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Complete image cropper example demonstrating:</p>
+<ul>
+<li>Basic cropping with ImageCropper component</li>
+<li>Custom aspect ratios</li>
+<li>Handling the cropped result</li>
+<li>Combining ImageAreaSelector with useLumina for custom workflows</li>
+</ul></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="react_ImageCropperExample.tsx.html">react/ImageCropperExample.tsx</a>, <a href="react_ImageCropperExample.tsx.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="applyEditingOptions"><span class="type-signature"></span>applyEditingOptions<span class="signature">(chain, options)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Applies the provided ImageEditingOptions to a Lumina instance.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="react_types.ts.html">react/types.ts</a>, <a href="react_types.ts.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chain</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Lumina chain instance</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The options to apply</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The modified Lumina chain instance</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="ascii"><span class="type-signature"></span>ascii<span class="signature">(imageData, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
@@ -713,7 +1253,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_ascii.js.html">filters/ascii.js</a>, <a href="filters_ascii.js.html#line30">line 30</a>
+        <a href="filters_ascii.js.html">filters/ascii.js</a>, <a href="filters_ascii.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -1045,7 +1585,7 @@ console.log(textOutput);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_backgroundBlur.js.html">filters/backgroundBlur.js</a>, <a href="filters_backgroundBlur.js.html#line24">line 24</a>
+        <a href="filters_backgroundBlur.js.html">filters/backgroundBlur.js</a>, <a href="filters_backgroundBlur.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -1488,7 +2028,7 @@ for better performance.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_blur.js.html">filters/blur.js</a>, <a href="filters_blur.js.html#line18">line 18</a>
+        <a href="filters_blur.js.html">filters/blur.js</a>, <a href="filters_blur.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -1675,7 +2215,7 @@ for better performance.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_brightness.js.html">filters/brightness.js</a>, <a href="filters_brightness.js.html#line21">line 21</a>
+        <a href="filters_brightness.js.html">filters/brightness.js</a>, <a href="filters_brightness.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -1868,7 +2408,7 @@ A convenience wrapper around the native <code>canvas.toBlob</code> callback API.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line132">line 132</a>
+        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line120">line 120</a>
     </li></ul></dd>
     
 
@@ -2158,7 +2698,7 @@ const url = URL.createObjectURL(blob);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_helpers.js.html">utils/helpers.js</a>, <a href="utils_helpers.js.html#line21">line 21</a>
+        <a href="utils_helpers.js.html">utils/helpers.js</a>, <a href="utils_helpers.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -2371,7 +2911,7 @@ clamp(128, 0, 255); // → 128</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_contrast.js.html">filters/contrast.js</a>, <a href="filters_contrast.js.html#line21">line 21</a>
+        <a href="filters_contrast.js.html">filters/contrast.js</a>, <a href="filters_contrast.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -2563,7 +3103,7 @@ clamp(128, 0, 255); // → 128</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line21">line 21</a>
+        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -2746,7 +3286,7 @@ Returns a new canvas with the cropped content.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line200">line 200</a>
+        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line195">line 195</a>
     </li></ul></dd>
     
 
@@ -3004,7 +3544,7 @@ This implementation uses a two-pass separable convolution for better performance
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_gaussianBlur.js.html">filters/gaussianBlur.js</a>, <a href="filters_gaussianBlur.js.html#line18">line 18</a>
+        <a href="filters_gaussianBlur.js.html">filters/gaussianBlur.js</a>, <a href="filters_gaussianBlur.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -3195,7 +3735,7 @@ pixel data as an <code>ImageData</code> object.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line57">line 57</a>
+        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -3395,7 +3935,7 @@ Useful for filters that require downsampling, like ASCII art.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line162">line 162</a>
+        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line155">line 155</a>
     </li></ul></dd>
     
 
@@ -3610,7 +4150,7 @@ eliminating redundant index arithmetic.</li>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_grayscale.js.html">filters/grayscale.js</a>, <a href="filters_grayscale.js.html#line46">line 46</a>
+        <a href="filters_grayscale.js.html">filters/grayscale.js</a>, <a href="filters_grayscale.js.html#line19">line 19</a>
     </li></ul></dd>
     
 
@@ -3783,7 +4323,7 @@ indicates an image format.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_helpers.js.html">utils/helpers.js</a>, <a href="utils_helpers.js.html#line35">line 35</a>
+        <a href="utils_helpers.js.html">utils/helpers.js</a>, <a href="utils_helpers.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -3948,7 +4488,7 @@ to prevent memory leaks.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_loader.js.html">core/loader.js</a>, <a href="core_loader.js.html#line40">line 40</a>
+        <a href="core_loader.js.html">core/loader.js</a>, <a href="core_loader.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -4164,7 +4704,7 @@ to prevent memory leaks.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_loader.js.html">core/loader.js</a>, <a href="core_loader.js.html#line14">line 14</a>
+        <a href="core_loader.js.html">core/loader.js</a>, <a href="core_loader.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -4354,7 +4894,7 @@ returning a Promise that resolves to an HTMLImageElement.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_loader.js.html">core/loader.js</a>, <a href="core_loader.js.html#line90">line 90</a>
+        <a href="core_loader.js.html">core/loader.js</a>, <a href="core_loader.js.html#line76">line 76</a>
     </li></ul></dd>
     
 
@@ -4402,7 +4942,7 @@ returning a Promise that resolves to an HTMLImageElement.</p>
     <h5 class="h5-examples">Examples</h5>
     
     <pre class="prettyprint"><code>// Load from URL
-const img = await loadImage('https://example.com/photo.jpg');</code></pre>
+const img = await loadImage('&lt;image url string>');</code></pre>
 
     <pre class="prettyprint"><code>// Load from File input
 const [file] = event.target.files;
@@ -4544,6 +5084,176 @@ a fully loaded <code>HTMLImageElement</code>, ready for canvas drawing.</p>
 
     
 
+    <h4 class="name" id="lumina"><span class="type-signature"></span>lumina<span class="signature">(source)</span><span class="type-signature"> &rarr; {<a href="Lumina.html">Lumina</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Initiates a chainable processing sequence.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">File</span>
+|
+
+<span class="param-type">HTMLImageElement</span>
+|
+
+<span class="param-type">HTMLCanvasElement</span>
+|
+
+<span class="param-type">ImageData</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The image source.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A new Lumina chain instance.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Lumina.html">Lumina</a></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="putPixelData"><span class="type-signature"></span>putPixelData<span class="signature">(canvas, imageData)</span><span class="type-signature"> &rarr; {void}</span></h4>
 
     
@@ -4562,7 +5272,7 @@ commit mutated pixel data back to a drawable surface.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line105">line 105</a>
+        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line89">line 89</a>
     </li></ul></dd>
     
 
@@ -4781,7 +5491,7 @@ Returns a new canvas with the resized content.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line180">line 180</a>
+        <a href="core_canvas.js.html">core/canvas.js</a>, <a href="core_canvas.js.html#line175">line 175</a>
     </li></ul></dd>
     
 
@@ -4990,7 +5700,7 @@ Returns a new canvas with the resized content.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_sepia.js.html">filters/sepia.js</a>, <a href="filters_sepia.js.html#line17">line 17</a>
+        <a href="filters_sepia.js.html">filters/sepia.js</a>, <a href="filters_sepia.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -5137,6 +5847,527 @@ Returns a new canvas with the resized content.</p></li></ul></dd>
 
     
 
+    <h4 class="name" id="useLumina"><span class="type-signature"></span>useLumina<span class="signature">(options)</span><span class="type-signature"> &rarr; {UseLuminaResult.&lt;T>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p><code>useLumina</code> - A powerful and declarative React hook for image processing.</p>
+<p>This hook manages the entire lifecycle of an image, applying advanced filters
+and transformations seamlessly while providing loading and error states.
+You can process images via explicit props, or utilize the <code>operations</code> callback
+for more complex chainable API logic.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="react_useLumina.ts.html">react/useLumina.ts</a>, <a href="react_useLumina.ts.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>```tsx
+const { result, loading, getImage } = useLumina({
+  source: 'photo.jpg',
+  grayscale: true,
+  brightness: 20,
+  outputType: 'dataUrl',
+  deps: [] // dependencies that trigger a re-run
+});
+
+// Get the image on demand (e.g., in an onClick handler)
+const uploadImage = async () => {
+  const blob = await getImage('blob');
+  await api.upload(blob);
+};
+```</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">UseLuminaOptions</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Configuration options for the hook.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LuminaSource</span>
+|
+
+<span class="param-type">null</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The image source (URL, File, HTMLImageElement, HTMLCanvasElement, or ImageData).</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>operations</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Optional callback to use Lumina's chainable API manually.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>deps</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;unknown></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>[]</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Array of dependencies that should trigger a re-render.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>outputType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LuminaOutputType</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>'imageData'</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>The format of the returned result ('imageData', 'dataUrl', 'blob').</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>grayscale</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Apply a grayscale filter.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>brightness</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Adjust image brightness.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>blur</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Apply a box blur effect.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Resize the image { width, height }.
+// ... and many other filters (sepia, contrast, sharpen, etc.)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The processing state containing <code>result</code>, <code>loading</code>, <code>error</code>, and an imperative <code>getImage</code> function.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">UseLuminaResult.&lt;T></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="watermark"><span class="type-signature"></span>watermark<span class="signature">(imageData, text, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {ImageData}</span></h4>
 
     
@@ -5153,7 +6384,7 @@ Returns a new canvas with the resized content.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="filters_watermark.js.html">filters/watermark.js</a>, <a href="filters_watermark.js.html#line23">line 23</a>
+        <a href="filters_watermark.js.html">filters/watermark.js</a>, <a href="filters_watermark.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -5449,6 +6680,86 @@ Returns a new canvas with the resized content.</p></li></ul></dd>
 
         <tr>
             
+                <td class="name"><code>fontSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>24</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Font size in pixels.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fontFace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>'Arial'</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Font family name.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>font</code></td>
             
 
@@ -5482,7 +6793,7 @@ Returns a new canvas with the resized content.</p></li></ul></dd>
                 </td>
             
 
-            <td class="description last"><p>CSS font string.</p></td>
+            <td class="description last"><p>CSS font string (overrides fontSize/fontFace).</p></td>
         </tr>
 
     
@@ -5829,7 +7140,7 @@ Returns a new canvas with the resized content.</p></li></ul></dd>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed Apr 29 2026 21:30:29 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed May 13 2026 15:57:38 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

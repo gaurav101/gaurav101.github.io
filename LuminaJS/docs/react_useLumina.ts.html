@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>react/useLumina.ts - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h2><a href="https://gaurav101.github.io/LuminaJS/" target="_blank" class="menu-item" id="demo" >Demo</a></h2><h3>Classes</h3><ul><li><a href="Lumina_Lumina.html">Lumina</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#ImageAreaSelector">ImageAreaSelector</a></li><li><a href="global.html#ImageCropper">ImageCropper</a></li><li><a href="global.html#ImageCropperExample">ImageCropperExample</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#LuminaCanvas">LuminaCanvas</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#applyEditingOptions">applyEditingOptions</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#lumina">lumina</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#useLumina">useLumina</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">react/useLumina.ts</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from 'react';
+import { lumina, type Lumina } from '../index.js';
+
+export type LuminaSource =
+  | string
+  | File
+  | HTMLImageElement
+  | HTMLCanvasElement
+  | ImageData;
+export type LuminaOutputType = 'imageData' | 'dataUrl' | 'blob';
+
+import { type ImageEditingOptions, applyEditingOptions } from './types.js';
+
+export interface UseLuminaOptions extends ImageEditingOptions {
+  source: LuminaSource | null;
+  operations?: (chain: Lumina) => Lumina;
+  deps?: unknown[];
+  outputType?: LuminaOutputType;
+}
+
+export interface UseLuminaResult&lt;T = unknown> {
+  result: T | null;
+  loading: boolean;
+  error: Error | null;
+  getImage: (overrideOutputType?: LuminaOutputType) => Promise&lt;T | null>;
+}
+
+/**
+ * `useLumina` - A powerful and declarative React hook for image processing.
+ *
+ * This hook manages the entire lifecycle of an image, applying advanced filters
+ * and transformations seamlessly while providing loading and error states.
+ * You can process images via explicit props, or utilize the `operations` callback
+ * for more complex chainable API logic.
+ *
+ * @template T - The expected output type (default: unknown)
+ *
+ * @param {UseLuminaOptions} options - Configuration options for the hook.
+ * @param {LuminaSource | null} options.source - The image source (URL, File, HTMLImageElement, HTMLCanvasElement, or ImageData).
+ * @param {Function} [options.operations] - Optional callback to use Lumina's chainable API manually.
+ * @param {unknown[]} [options.deps=[]] - Array of dependencies that should trigger a re-render.
+ * @param {LuminaOutputType} [options.outputType='imageData'] - The format of the returned result ('imageData', 'dataUrl', 'blob').
+ * @param {boolean} [options.grayscale] - Apply a grayscale filter.
+ * @param {number} [options.brightness] - Adjust image brightness.
+ * @param {number} [options.blur] - Apply a box blur effect.
+ * @param {Object} [options.resize] - Resize the image { width, height }.
+ * // ... and many other filters (sepia, contrast, sharpen, etc.)
+ *
+ * @returns {UseLuminaResult&lt;T>} The processing state containing `result`, `loading`, `error`, and an imperative `getImage` function.
+ *
+ * @example
+ * ```tsx
+ * const { result, loading, getImage } = useLumina({
+ *   source: 'photo.jpg',
+ *   grayscale: true,
+ *   brightness: 20,
+ *   outputType: 'dataUrl',
+ *   deps: [] // dependencies that trigger a re-run
+ * });
+ *
+ * // Get the image on demand (e.g., in an onClick handler)
+ * const uploadImage = async () => {
+ *   const blob = await getImage('blob');
+ *   await api.upload(blob);
+ * };
+ * ```
+ */
+export function useLumina&lt;T = unknown>({
+  source,
+  operations,
+  deps = [],
+  outputType = 'imageData',
+  ...editingOptions
+}: UseLuminaOptions): UseLuminaResult&lt;T> {
+  const [result, setResult] = useState&lt;T | null>(null);
+  const [loading, setLoading] = useState&lt;boolean>(false);
+  const [error, setError] = useState&lt;Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const process = async () => {
+      if (!source) {
+        setResult(null);
+        return;
+      }
+
+      setLoading(true);
+      setError(null);
+      try {
+        let chain = lumina(source);
+
+        chain = applyEditingOptions(chain, editingOptions);
+
+        if (typeof operations === 'function') {
+          chain = operations(chain);
+        }
+
+        let data: T;
+        switch (outputType) {
+          case 'dataUrl':
+            data = (await chain.toDataURL()) as unknown as T;
+            break;
+          case 'blob':
+            data = (await chain.toBlob()) as unknown as T;
+            break;
+          default:
+            data = (await chain.render()) as unknown as T;
+        }
+
+        if (isMounted) {
+          setResult(data as T);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    process();
+
+    return () => {
+      isMounted = false;
+    };
+    // We include operations and outputType, and spread deps.
+    // We disable the rule for the spread as it's intended for user-provided dependencies.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [source, outputType, operations, JSON.stringify(editingOptions), ...deps]);
+
+  const getImage = async (
+    overrideOutputType?: LuminaOutputType,
+  ): Promise&lt;T | null> => {
+    if (!source) return null;
+    try {
+      let chain = lumina(source);
+      chain = applyEditingOptions(chain, editingOptions);
+      if (typeof operations === 'function') {
+        chain = operations(chain);
+      }
+
+      let data: T;
+      const finalOutputType = overrideOutputType || outputType;
+      switch (finalOutputType) {
+        case 'dataUrl':
+          data = (await chain.toDataURL()) as unknown as T;
+          break;
+        case 'blob':
+          data = (await chain.toBlob()) as unknown as T;
+          break;
+        default:
+          data = (await chain.render()) as unknown as T;
+      }
+      return data;
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error(String(err)));
+      return null;
+    }
+  };
+
+  return { result, loading, error, getImage };
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed May 13 2026 15:57:38 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

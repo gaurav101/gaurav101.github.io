@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>react/LuminaCanvas.tsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h2><a href="https://gaurav101.github.io/LuminaJS/" target="_blank" class="menu-item" id="demo" >Demo</a></h2><h3>Classes</h3><ul><li><a href="Lumina_Lumina.html">Lumina</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#ImageAreaSelector">ImageAreaSelector</a></li><li><a href="global.html#ImageCropper">ImageCropper</a></li><li><a href="global.html#ImageCropperExample">ImageCropperExample</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#LuminaCanvas">LuminaCanvas</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#applyEditingOptions">applyEditingOptions</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#lumina">lumina</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#useLumina">useLumina</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">react/LuminaCanvas.tsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+  useRef,
+  useEffect,
+  useState,
+  useMemo,
+  useCallback,
+  forwardRef,
+  type CanvasHTMLAttributes,
+  type MutableRefObject,
+  type Ref,
+} from 'react';
+import { lumina, type Lumina } from '../index.js';
+import { type ImageEditingOptions, applyEditingOptions } from './types.js';
+
+export interface LuminaCanvasProps
+  extends
+    Omit&lt;CanvasHTMLAttributes&lt;HTMLCanvasElement>, 'onError'>,
+    ImageEditingOptions {
+  source:
+    | string
+    | File
+    | HTMLImageElement
+    | HTMLCanvasElement
+    | ImageData
+    | null;
+  filter?: (chain: Lumina) => Lumina;
+  onProcessError?: (error: Error) => void;
+  onLoad?: () => void;
+  getImage?: (data: string | Blob | ImageData | HTMLCanvasElement) => void;
+  outputType?: 'imageData' | 'dataUrl' | 'blob' | 'canvas';
+}
+
+/**
+ * `LuminaCanvas` - A declarative React component to render LuminaJS processed images on a canvas.
+ *
+ * This component handles the rendering of image transformations directly onto an HTML `&lt;canvas>`.
+ * It provides a powerful, prop-driven interface to apply image edits like crop, resize, and various filters.
+ * You can also access the resulting generated image using the `getImage` callback prop.
+ *
+ * @param {LuminaCanvasProps} props - The props for the component, extending standard CanvasHTMLAttributes.
+ * @param {LuminaSource | null} props.source - The image source (URL, File, HTMLImageElement, HTMLCanvasElement, or ImageData).
+ * @param {Function} [props.filter] - An optional callback to use the Lumina chainable API manually. Runs after explicit props.
+ * @param {Function} [props.onProcessError] - Callback triggered if an error occurs during processing.
+ * @param {Function} [props.onLoad] - Callback triggered when the image is successfully processed and rendered to the canvas.
+ * @param {Function} [props.getImage] - Callback triggered after rendering to provide the resulting image data.
+ * @param {'imageData' | 'dataUrl' | 'blob' | 'canvas'} [props.outputType='canvas'] - The format of the data sent to `getImage`.
+ * @param {boolean} [props.grayscale] - Applies a grayscale filter.
+ * @param {number} [props.brightness] - Adjusts brightness.
+ * @param {Object} [props.resize] - Resizes the image e.g. { width: 800, height: 600 }.
+ * @param {Object} [props.crop] - Crops the image e.g. { x: 0, y: 0, width: 100, height: 100 }.
+ * // ... plus many more filters.
+ *
+ * @example
+ * ```tsx
+ * function App() {
+ *   const handleImage = (dataUrl) => console.log('Generated Image:', dataUrl);
+ *
+ *   return (
+ *     &lt;LuminaCanvas
+ *       source="photo.jpg"
+ *       brightness={20}
+ *       sepia={true}
+ *       resize={{ width: 500, height: 500 }}
+ *       outputType="dataUrl"
+ *       getImage={handleImage}
+ *       width={500} // standard canvas attribute
+ *       height={500} // standard canvas attribute
+ *     />
+ *   );
+ * }
+ * ```
+ */
+export const LuminaCanvas = forwardRef&lt;HTMLCanvasElement, LuminaCanvasProps>(
+  function LuminaCanvasComponent(
+    {
+      source,
+      filter,
+      onProcessError,
+      onLoad,
+      getImage,
+      outputType = 'canvas',
+      grayscale,
+      brightness,
+      contrast,
+      sepia,
+      ascii,
+      blur,
+      gaussianBlur,
+      watermark,
+      backgroundBlur,
+      sharpen,
+      emboss,
+      edgeDetection,
+      resize,
+      crop,
+      ...props
+    }: LuminaCanvasProps,
+    ref: Ref&lt;HTMLCanvasElement>,
+  ) {
+    const editingOptions = useMemo(
+      () => ({
+        grayscale,
+        brightness,
+        contrast,
+        sepia,
+        ascii,
+        blur,
+        gaussianBlur,
+        watermark,
+        backgroundBlur,
+        sharpen,
+        emboss,
+        edgeDetection,
+        resize,
+        crop,
+      }),
+      [
+        grayscale,
+        brightness,
+        contrast,
+        sepia,
+        ascii,
+        blur,
+        gaussianBlur,
+        watermark,
+        backgroundBlur,
+        sharpen,
+        emboss,
+        edgeDetection,
+        resize,
+        crop,
+      ],
+    );
+    const canvasRef = useRef&lt;HTMLCanvasElement>(null);
+    const [error, setError] = useState&lt;Error | null>(null);
+    const setCanvasRef = useCallback(
+      (node: HTMLCanvasElement | null) => {
+        canvasRef.current = node;
+
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (ref) {
+          (ref as MutableRefObject&lt;HTMLCanvasElement | null>).current = node;
+        }
+      },
+      [ref],
+    );
+
+    useEffect(() => {
+      if (!source || !canvasRef.current) return;
+
+      let isMounted = true;
+
+      const applyFilter = async () => {
+        try {
+          let chain = lumina(source);
+          chain = applyEditingOptions(chain, editingOptions);
+
+          if (typeof filter === 'function') {
+            chain = filter(chain);
+          }
+
+          if (canvasRef.current) {
+            await chain.toCanvas(canvasRef.current);
+          }
+
+          if (isMounted &amp;&amp; onLoad) {
+            onLoad();
+          }
+
+          if (isMounted &amp;&amp; getImage &amp;&amp; canvasRef.current) {
+            if (outputType === 'dataUrl') {
+              getImage(canvasRef.current.toDataURL());
+            } else if (outputType === 'blob') {
+              canvasRef.current.toBlob((blob) => {
+                if (blob) getImage(blob);
+              });
+            } else if (outputType === 'imageData') {
+              const ctx = canvasRef.current.getContext('2d');
+              if (ctx) {
+                getImage(
+                  ctx.getImageData(
+                    0,
+                    0,
+                    canvasRef.current.width,
+                    canvasRef.current.height,
+                  ),
+                );
+              }
+            } else {
+              getImage(canvasRef.current);
+            }
+          }
+        } catch (err) {
+          const errorObject =
+            err instanceof Error ? err : new Error(String(err));
+          if (isMounted) {
+            setError(errorObject);
+            if (onProcessError) onProcessError(errorObject);
+          }
+        }
+      };
+
+      applyFilter();
+
+      return () => {
+        isMounted = false;
+      };
+    }, [
+      source,
+      filter,
+      onProcessError,
+      onLoad,
+      getImage,
+      outputType,
+      editingOptions,
+    ]);
+
+    if (error) {
+      return &lt;div className="lumina-error">{error.message}&lt;/div>;
+    }
+
+    return &lt;canvas ref={setCanvasRef} {...props} />;
+  },
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed May 13 2026 15:57:38 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>react/ImageAreaSelector.tsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/gaurav101/LuminaJS" target="_blank" class="menu-item" id="repository" >Github Repo</a></h2><h2><a href="https://gaurav101.github.io/LuminaJS/" target="_blank" class="menu-item" id="demo" >Demo</a></h2><h3>Classes</h3><ul><li><a href="Lumina_Lumina.html">Lumina</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CanvasContext">CanvasContext</a></li><li><a href="global.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></li><li><a href="global.html#ImageAreaSelector">ImageAreaSelector</a></li><li><a href="global.html#ImageCropper">ImageCropper</a></li><li><a href="global.html#ImageCropperExample">ImageCropperExample</a></li><li><a href="global.html#LUMA_B">LUMA_B</a></li><li><a href="global.html#LUMA_G">LUMA_G</a></li><li><a href="global.html#LUMA_R">LUMA_R</a></li><li><a href="global.html#LuminaCanvas">LuminaCanvas</a></li><li><a href="global.html#applyConvolution">applyConvolution</a></li><li><a href="global.html#applyEditingOptions">applyEditingOptions</a></li><li><a href="global.html#ascii">ascii</a></li><li><a href="global.html#backgroundBlur">backgroundBlur</a></li><li><a href="global.html#blur">blur</a></li><li><a href="global.html#brightness">brightness</a></li><li><a href="global.html#canvasToBlob">canvasToBlob</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#createOffscreenCanvas">createOffscreenCanvas</a></li><li><a href="global.html#crop">crop</a></li><li><a href="global.html#edgeDetection">edgeDetection</a></li><li><a href="global.html#emboss">emboss</a></li><li><a href="global.html#gaussianBlur">gaussianBlur</a></li><li><a href="global.html#getPixelData">getPixelData</a></li><li><a href="global.html#getResizedImageData">getResizedImageData</a></li><li><a href="global.html#grayscale">grayscale</a></li><li><a href="global.html#isImageFile">isImageFile</a></li><li><a href="global.html#loadFromFile">loadFromFile</a></li><li><a href="global.html#loadFromURL">loadFromURL</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#lumina">lumina</a></li><li><a href="global.html#putPixelData">putPixelData</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#sepia">sepia</a></li><li><a href="global.html#sharpen">sharpen</a></li><li><a href="global.html#useLumina">useLumina</a></li><li><a href="global.html#watermark">watermark</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">react/ImageAreaSelector.tsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+} from 'react';
+import type { FC, MouseEvent, ReactNode } from 'react';
+
+export interface CropArea {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+interface ImageAreaSelectorProps {
+  src: string;
+  onCropChange: (crop: CropArea) => void;
+  onCropComplete?: (crop: CropArea) => void;
+  aspect?: number;
+  lineWidth?: number;
+  lineColor?: string;
+  overlayOpacity?: number;
+  // Optional render prop to display controls relative to the selection overlay.
+  // Receives overlay dimensions (CSS pixels) and display scale.
+  overlayControls?: (params: {
+    left: number;
+    top: number;
+    width: number;
+    height: number;
+    scaleX: number;
+    scaleY: number;
+  }) => ReactNode;
+}
+
+type DragMode = 'draw' | 'move';
+
+/**
+ * ImageAreaSelector - An interactive image cropping tool.
+ *
+ * Displays an image with a draggable selection box to define a crop area.
+ * The selected crop area can be dragged to another part of the image before applying.
+ * Constraints applied: image boundaries, optional aspect ratio, and prevents negative dimensions.
+ *
+ * @param {ImageAreaSelectorProps} props
+ * @param {string} props.src - The image URL to display
+ * @param {Function} props.onCropChange - Callback triggered when crop area changes
+ * @param {Function} [props.onCropComplete] - Callback triggered when crop selection ends
+ * @param {number} [props.aspect] - Optional aspect ratio to enforce (width / height)
+ * @param {number} [props.lineWidth=2] - Border line width in pixels
+ * @param {string} [props.lineColor='#fff'] - Border color (CSS color value)
+ * @param {number} [props.overlayOpacity=0.5] - Opacity of the darkened surround area (0-1)
+ *
+ * @example
+ * ```tsx
+ * const [crop, setCrop] = useState&lt;CropArea>({ x: 0, y: 0, width: 0, height: 0 });
+ *
+ * &lt;ImageAreaSelector
+ *   src="image.jpg"
+ *   aspect={16 / 9}
+ *   lineColor="#00ff00"
+ *   onCropChange={setCrop}
+ * />
+ * ```
+ */
+export const ImageAreaSelector: FC&lt;ImageAreaSelectorProps> = ({
+  src,
+  onCropChange,
+  onCropComplete,
+  aspect,
+  lineWidth = 2,
+  lineColor = '#fff',
+  overlayOpacity = 0.5,
+  overlayControls,
+}) => {
+  const [crop, setCrop] = useState&lt;CropArea>({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragMode, setDragMode] = useState&lt;DragMode>('draw');
+  const [displayScale, setDisplayScale] = useState({
+    scaleX: 1,
+    scaleY: 1,
+  });
+  const imgRef = useRef&lt;HTMLImageElement>(null);
+  const startPos = useRef({ x: 0, y: 0 });
+  const moveOffset = useRef({ x: 0, y: 0 });
+  const cropRef = useRef&lt;CropArea>(crop);
+  const isDraggingRef = useRef(false);
+  const dragModeRef = useRef&lt;DragMode>('draw');
+
+  const updateDisplayScale = useCallback(() => {
+    const img = imgRef.current;
+    if (!img || img.naturalWidth === 0 || img.naturalHeight === 0) return;
+
+    const rect = img.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
+
+    setDisplayScale({
+      scaleX: rect.width / img.naturalWidth,
+      scaleY: rect.height / img.naturalHeight,
+    });
+  }, []);
+
+  const getImagePoint = useCallback((e: MouseEvent&lt;HTMLElement>) => {
+    const img = imgRef.current;
+    const rect = img?.getBoundingClientRect();
+    if (!rect || !img) return null;
+
+    const scaleX = img.naturalWidth / rect.width;
+    const scaleY = img.naturalHeight / rect.height;
+
+    return {
+      x: Math.max(
+        0,
+        Math.min((e.clientX - rect.left) * scaleX, img.naturalWidth),
+      ),
+      y: Math.max(
+        0,
+        Math.min((e.clientY - rect.top) * scaleY, img.naturalHeight),
+      ),
+      imageWidth: img.naturalWidth,
+      imageHeight: img.naturalHeight,
+    };
+  }, []);
+
+  const handleMouseDown = useCallback(
+    (e: MouseEvent&lt;HTMLDivElement>) => {
+      if (e.button !== 0) return;
+
+      const point = getImagePoint(e);
+      if (!point) return;
+
+      setIsDragging(true);
+      isDraggingRef.current = true;
+
+      const currentCrop = cropRef.current;
+      const isInsideCrop =
+        currentCrop.width > 0 &amp;&amp;
+        currentCrop.height > 0 &amp;&amp;
+        point.x >= currentCrop.x &amp;&amp;
+        point.x &lt;= currentCrop.x + currentCrop.width &amp;&amp;
+        point.y >= currentCrop.y &amp;&amp;
+        point.y &lt;= currentCrop.y + currentCrop.height;
+
+      if (isInsideCrop) {
+        dragModeRef.current = 'move';
+        setDragMode('move');
+        moveOffset.current = {
+          x: point.x - currentCrop.x,
+          y: point.y - currentCrop.y,
+        };
+        return;
+      }
+
+      dragModeRef.current = 'draw';
+      setDragMode('draw');
+      startPos.current = { x: point.x, y: point.y };
+      const emptyCrop = { x: point.x, y: point.y, width: 0, height: 0 };
+      cropRef.current = emptyCrop;
+      setCrop(emptyCrop);
+    },
+    [getImagePoint],
+  );
+
+  const handleMouseMove = useCallback(
+    (e: MouseEvent&lt;HTMLDivElement>) => {
+      if (!isDragging || !imgRef.current) return;
+
+      const point = getImagePoint(e);
+      if (!point) return;
+
+      if (dragModeRef.current === 'move') {
+        const currentCrop = cropRef.current;
+        const newCrop = {
+          ...currentCrop,
+          x: Math.max(
+            0,
+            Math.min(
+              point.x - moveOffset.current.x,
+              point.imageWidth - currentCrop.width,
+            ),
+          ),
+          y: Math.max(
+            0,
+            Math.min(
+              point.y - moveOffset.current.y,
+              point.imageHeight - currentCrop.height,
+            ),
+          ),
+        };
+
+        cropRef.current = newCrop;
+        setCrop(newCrop);
+        onCropChange(newCrop);
+        return;
+      }
+
+      let width = point.x - startPos.current.x;
+      let height = aspect ? width / aspect : point.y - startPos.current.y;
+
+      if (aspect &amp;&amp; Math.abs(height) > 0) {
+        const maxHeight = point.imageHeight - Math.max(0, startPos.current.y);
+        const maxWidth = point.imageWidth - Math.max(0, startPos.current.x);
+
+        if (Math.abs(height) > maxHeight) {
+          height = Math.sign(height) * maxHeight;
+          width = height * aspect;
+        }
+        if (Math.abs(width) > maxWidth) {
+          width = Math.sign(width) * maxWidth;
+          height = width / aspect;
+        }
+      }
+
+      const newCrop = {
+        x: width > 0 ? startPos.current.x : point.x,
+        y: height > 0 ? startPos.current.y : point.y,
+        width: Math.abs(width),
+        height: Math.abs(height),
+      };
+
+      cropRef.current = newCrop;
+      setCrop(newCrop);
+      onCropChange(newCrop);
+    },
+    [isDragging, aspect, getImagePoint, onCropChange],
+  );
+
+  const stopDragging = useCallback(() => {
+    if (!isDraggingRef.current) return;
+
+    isDraggingRef.current = false;
+    setIsDragging(false);
+
+    const finalCrop = cropRef.current;
+    if (finalCrop.width > 0 &amp;&amp; finalCrop.height > 0) {
+      onCropComplete?.(finalCrop);
+    }
+  }, [onCropComplete]);
+
+  useEffect(() => {
+    updateDisplayScale();
+    window.addEventListener('resize', updateDisplayScale);
+    return () => window.removeEventListener('resize', updateDisplayScale);
+  }, [src, updateDisplayScale]);
+
+  return (
+    &lt;div
+      style={{
+        position: 'relative',
+        display: 'inline-block',
+        cursor:
+          isDragging &amp;&amp; dragMode === 'move'
+            ? 'grabbing'
+            : isDragging
+              ? 'crosshair'
+              : 'crosshair',
+        userSelect: 'none',
+      }}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={stopDragging}
+      onMouseLeave={stopDragging}
+    >
+      &lt;img
+        ref={imgRef}
+        src={src}
+        alt="Crop Source"
+        onLoad={updateDisplayScale}
+        style={{ display: 'block', maxWidth: '100%', userSelect: 'none' }}
+        draggable={false}
+      />
+
+      {/* The Selection Box Overlay */}
+      {crop.width > 0 &amp;&amp; crop.height > 0 &amp;&amp; (
+        &lt;>
+          &lt;div
+            style={{
+              position: 'absolute',
+              border: `${lineWidth}px dashed ${lineColor}`,
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              boxShadow: `0 0 0 9999px rgba(0, 0, 0, ${overlayOpacity})`,
+              cursor: isDragging ? 'grabbing' : 'move',
+              left: crop.x * displayScale.scaleX,
+              top: crop.y * displayScale.scaleY,
+              width: crop.width * displayScale.scaleX,
+              height: crop.height * displayScale.scaleY,
+              zIndex: 10,
+            }}
+          />
+
+          {/* Optional controls rendered relative to the selection overlay */}
+          {overlayControls &amp;&amp;
+            (() => {
+              const leftPx = crop.x * displayScale.scaleX;
+              const topPx = crop.y * displayScale.scaleY;
+              const widthPx = crop.width * displayScale.scaleX;
+              const heightPx = crop.height * displayScale.scaleY;
+
+              // Attempt to place controls above the selection; if not enough space, place below.
+              const CONTROL_HEIGHT = 40;
+              let controlsTop = topPx - CONTROL_HEIGHT - 8;
+              if (controlsTop &lt; 8) controlsTop = topPx + heightPx + 8;
+
+              return (
+                &lt;div
+                  style={{
+                    position: 'absolute',
+                    left: leftPx,
+                    top: controlsTop,
+                    zIndex: 1001,
+                    // Ensure controls receive pointer events and don't let parent start drag
+                    pointerEvents: 'auto',
+                  }}
+                  // Prevent parent drag/selection handlers from reacting to clicks on controls
+                  onMouseDown={(ev) => ev.stopPropagation()}
+                  onMouseUp={(ev) => ev.stopPropagation()}
+                  onClick={(ev) => ev.stopPropagation()}
+                >
+                  {overlayControls({
+                    left: leftPx,
+                    top: topPx,
+                    width: widthPx,
+                    height: heightPx,
+                    scaleX: displayScale.scaleX,
+                    scaleY: displayScale.scaleY,
+                  })}
+                &lt;/div>
+              );
+            })()}
+        &lt;/>
+      )}
+    &lt;/div>
+  );
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed May 13 2026 15:57:38 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>
