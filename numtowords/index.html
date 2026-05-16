@@ -1,511 +1,253 @@
-<!DOCTYPE html>
-<html class="default" lang="en" data-base="./">
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="IE=edge" />
-    <title>@gks101/numtowords</title>
-    <meta name="description" content="Documentation for @gks101/numtowords" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/style.css" />
-    <link rel="stylesheet" href="assets/highlight.css" />
-    <script defer src="assets/main.js"></script>
-    <script async src="assets/icons.js" id="tsd-icons-script"></script>
-    <script async src="assets/search.js" id="tsd-search-script"></script>
-    <script async src="assets/navigation.js" id="tsd-nav-script"></script>
-    <link rel="stylesheet" href="assets/typedoc-github-style.css" />
-</head>
-
-<body>
-    <script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"; document.body.style.display = "none"; setTimeout(() => window.app ? app.showPage() : document.body.style.removeProperty("display"), 500)</script>
-    <header class="tsd-page-toolbar">
-        <div class="tsd-toolbar-contents container"><a href="index.html" class="title">@gks101/numtowords</a>
-            <div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget"
-                aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <use href="assets/icons.svg#icon-search"></use>
-                </svg></button>
-            <dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input"
-                    aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true"
-                    autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100" />
-                <ul role="listbox" id="tsd-search-results"></ul>
-                <div id="tsd-search-status" aria-live="polite" aria-atomic="true">
-                    <div>Preparing search index...</div>
-                </div>
-            </dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu"
-                aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <use href="assets/icons.svg#icon-menu"></use>
-                </svg></a>
-        </div>
-    </header>
-    <div class="container container-main">
-        <div class="col-content">
-            <div class="tsd-panel tsd-typography">
-                <h1 id="gks101numtowords" class="tsd-anchor-link">@gks101/numtowords<a href="#gks101numtowords"
-                        aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h1>
-                <p><a href="https://bundlephobia.com/package/@gks101/numtowords"><img
-                            src="https://badgen.net/bundlephobia/minzip/react" alt="bundle size"></a> <a
-                        href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="license"></a> <a
-                        href="https://bundlephobia.com/package/@gks101/numtowords"><img
-                            src="https://badgen.net/bundlephobia/tree-shaking/react-colorful" alt="tree shaking"></a> <a
-                        href="https://bundlephobia.com/package/@gks101/numtowords"><img
-                            src="https://badgen.net/bundlephobia/dependency-count/react-colorful"
-                            alt="dependency count"></a></p>
-                <p>Convert numbers to words in <strong>multiple languages and numeral systems</strong> — English,
-                    Indian, Hindi, German, French — with full TypeScript support,zero dependencies and &lt; 3kb size.
-                </p>
-                <pre><code><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_124</span><span class="hl-1">)                       </span><span class="hl-3">// &quot;One million one hundred and twenty-four&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_124</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&quot;in&quot;</span><span class="hl-1"> })    </span><span class="hl-3">// &quot;Ten lakh one hundred twenty-four&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_124</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&quot;hi&quot;</span><span class="hl-1"> })    </span><span class="hl-3">// &quot;दस लाख एक सौ चौबीस&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_124</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&quot;de&quot;</span><span class="hl-1"> })    </span><span class="hl-3">// &quot;Eine Million einhundertvierundzwanzig&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_124</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&quot;fr&quot;</span><span class="hl-1"> })    </span><span class="hl-3">// &quot;Un million cent vingt-quatre&quot;</span>
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@gks101/numtowords - v1.0.3</title><meta name="description" content="Documentation for @gks101/numtowords"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><link rel="stylesheet" href="assets/typedoc-github-style.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">@gks101/numtowords - v1.0.3</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>@gks101/numtowords - v1.0.3</h1></div><div class="tsd-panel tsd-typography"><h1 id="gks101numtowords" class="tsd-anchor-link">@gks101/numtowords<a href="#gks101numtowords" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1>
+<p><a href="https://bundlephobia.com/package/@gks101/numtowords"><img src="https://badgen.net/bundlephobia/minzip/react" alt="bundle size"></a> <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="license"></a> <a href="https://bundlephobia.com/package/@gks101/numtowords"><img src="https://badgen.net/bundlephobia/tree-shaking/react-colorful" alt="tree shaking"></a> <a href="https://bundlephobia.com/package/@gks101/numtowords"><img src="https://badgen.net/bundlephobia/dependency-count/react-colorful" alt="dependency count"></a></p>
+<p>Convert numbers to words in <strong>multiple languages and numeral systems</strong> — English, Indian, Hindi, German, French — with full TypeScript support,zero dependencies and &lt; 3kb size.</p>
+<pre><code><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_124</span><span class="hl-1">)                       </span><span class="hl-3">// &quot;One million one hundred and twenty-four&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">12.34</span><span class="hl-1">)                           </span><span class="hl-3">// &quot;Twelve point three four&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">&quot;150.50&quot;</span><span class="hl-1">)                        </span><span class="hl-3">// &quot;One hundred and fifty point five zero&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_124</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&quot;in&quot;</span><span class="hl-1"> })    </span><span class="hl-3">// &quot;Ten lakh one hundred twenty-four&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_124</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&quot;hi&quot;</span><span class="hl-1"> })    </span><span class="hl-3">// &quot;दस लाख एक सौ चौबीस&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">&quot;12.34&quot;</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&quot;hi&quot;</span><span class="hl-1"> })      </span><span class="hl-3">// &quot;बारह दशमलव तीन चार&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_124</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&quot;de&quot;</span><span class="hl-1"> })    </span><span class="hl-3">// &quot;Eine Million einhundertvierundzwanzig&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_124</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&quot;fr&quot;</span><span class="hl-1"> })    </span><span class="hl-3">// &quot;Un million cent vingt-quatre&quot;</span>
 </code><button>Copy</button></pre>
 
-                <hr>
-                <h2 id="features" class="tsd-anchor-link">Features<a href="#features" aria-label="Permalink"
-                        class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h2>
-                <ul>
-                    <li>🌍 <strong>5 locales out of the box</strong> — <code>en</code>, <code>in</code>,
-                        <code>hi</code>, <code>de</code>, <code>fr</code>
-                    </li>
-                    <li>🇮🇳 <strong>Indian numbering system</strong> — lakh, crore, arab, kharab, neel, padma, shankh
-                    </li>
-                    <li>🔢 <strong>BigInt support</strong> — handles arbitrarily large numbers</li>
-                    <li>💱 <strong>Currency mode</strong> — appends a currency label</li>
-                    <li>🔌 <strong>Extensible</strong> — register your own locale in two lines</li>
-                    <li>📦 <strong>Three bundle formats</strong> — ESM, CJS, UMD (browser ready)</li>
-                    <li>🔷 <strong>Full TypeScript types</strong> included</li>
-                </ul>
-                <hr>
-                <h2 id="installation" class="tsd-anchor-link">Installation<a href="#installation" aria-label="Permalink"
-                        class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h2>
-                <pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-5">install</span><span class="hl-1"> </span><span class="hl-5">@gks101@numtowords</span>
+<hr>
+<h2 id="features" class="tsd-anchor-link">Features<a href="#features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<ul>
+<li>🌍 <strong>5 locales out of the box</strong> — <code>en</code>, <code>in</code>, <code>hi</code>, <code>de</code>, <code>fr</code></li>
+<li>🇮🇳 <strong>Indian numbering system</strong> — lakh, crore, arab, kharab, neel, padma, shankh</li>
+<li>🔢 <strong>Decimal point support</strong> — converts decimal numbers and decimal strings digit by digit</li>
+<li>🔢 <strong>BigInt support</strong> — handles arbitrarily large numbers</li>
+<li>💱 <strong>Currency mode</strong> — appends a currency label</li>
+<li>🔌 <strong>Extensible</strong> — register your own locale in two lines</li>
+<li>📦 <strong>Three bundle formats</strong> — ESM, CJS, UMD (browser ready)</li>
+<li>🔷 <strong>Full TypeScript types</strong> included</li>
+</ul>
+<hr>
+<h2 id="installation" class="tsd-anchor-link">Installation<a href="#installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-4">install</span><span class="hl-1"> </span><span class="hl-4">@gks101/numtowords</span>
 </code><button type="button">Copy</button></pre>
 
-                <hr>
-                <h2 id="quick-start" class="tsd-anchor-link">Quick Start<a href="#quick-start" aria-label="Permalink"
-                        class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h2>
-                <pre><code class="ts"><span class="hl-6">import</span><span class="hl-1"> { </span><span class="hl-4">convert</span><span class="hl-1"> } </span><span class="hl-6">from</span><span class="hl-1"> </span><span class="hl-5">&#39;@gks101@numtowords&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">0</span><span class="hl-1">); </span><span class="hl-3">// &quot;Zero&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">42</span><span class="hl-1">); </span><span class="hl-3">// &quot;Forty-two&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_000</span><span class="hl-1">); </span><span class="hl-3">// &quot;One million&quot;</span>
+<hr>
+<h2 id="quick-start" class="tsd-anchor-link">Quick Start<a href="#quick-start" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<pre><code class="ts"><span class="hl-6">import</span><span class="hl-1"> { </span><span class="hl-5">convert</span><span class="hl-1"> } </span><span class="hl-6">from</span><span class="hl-1"> </span><span class="hl-4">&#39;@gks101/numtowords&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">0</span><span class="hl-1">); </span><span class="hl-3">// &quot;Zero&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">42</span><span class="hl-1">); </span><span class="hl-3">// &quot;Forty-two&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_000</span><span class="hl-1">); </span><span class="hl-3">// &quot;One million&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">12.34</span><span class="hl-1">); </span><span class="hl-3">// &quot;Twelve point three four&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">&#39;150.50&#39;</span><span class="hl-1">); </span><span class="hl-3">// &quot;One hundred and fifty point five zero&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <h3 id="indian-numbering-system" class="tsd-anchor-link">Indian numbering system<a
-                        href="#indian-numbering-system" aria-label="Permalink" class="tsd-anchor-icon"><svg
-                            viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_00_000</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;in&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;One lakh&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">10_00_000</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;in&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Ten lakh&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_00_00_000</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;in&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;One crore&quot;</span>
+<h3 id="decimal-numbers" class="tsd-anchor-link">Decimal numbers<a href="#decimal-numbers" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Decimal values are supported with <code>.</code> as the decimal separator. The integer part is converted normally, and the fractional part is converted digit by digit using the selected locale.</p>
+<pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">12.34</span><span class="hl-1">); </span><span class="hl-3">// &quot;Twelve point three four&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">&#39;150.50&#39;</span><span class="hl-1">); </span><span class="hl-3">// &quot;One hundred and fifty point five zero&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">&#39;-0.25&#39;</span><span class="hl-1">); </span><span class="hl-3">// &quot;Negative zero point two five&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">&#39;12.34&#39;</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;in&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Twelve point three four&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">&#39;12.34&#39;</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;hi&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;बारह दशमलव तीन चार&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">&#39;12.34&#39;</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;de&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Zwölf komma drei vier&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">&#39;12.34&#39;</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;fr&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Douze virgule trois quatre&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <h3 id="hindi-devanagari" class="tsd-anchor-link">Hindi (Devanagari)<a href="#hindi-devanagari"
-                        aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_00_000</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;hi&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;एक लाख&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_00_00_000</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;hi&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;एक करोड़&quot;</span>
+<p>Use a string when trailing zeros are meaningful:</p>
+<pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">150.5</span><span class="hl-1">); </span><span class="hl-3">// &quot;One hundred and fifty point five&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">&#39;150.50&#39;</span><span class="hl-1">); </span><span class="hl-3">// &quot;One hundred and fifty point five zero&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <h3 id="german" class="tsd-anchor-link">German<a href="#german" aria-label="Permalink"
-                        class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">21</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;de&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Einundzwanzig&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_000</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;de&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Eine Million&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">2_000_000</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;de&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Zwei Millionen&quot;</span>
+<h3 id="indian-numbering-system" class="tsd-anchor-link">Indian numbering system<a href="#indian-numbering-system" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_00_000</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;in&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;One lakh&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">10_00_000</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;in&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Ten lakh&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_00_00_000</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;in&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;One crore&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <h3 id="french" class="tsd-anchor-link">French<a href="#french" aria-label="Permalink"
-                        class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">70</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;fr&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Soixante-dix&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">80</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;fr&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Quatre-vingts&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_000</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;fr&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Un million&quot;</span>
+<h3 id="hindi-devanagari" class="tsd-anchor-link">Hindi (Devanagari)<a href="#hindi-devanagari" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_00_000</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;hi&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;एक लाख&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_00_00_000</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;hi&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;एक करोड़&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <hr>
-                <h2 id="api" class="tsd-anchor-link">API<a href="#api" aria-label="Permalink"
-                        class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h2>
-                <h3 id="_" class="tsd-anchor-link"><code>convert(input, options?)</code><a href="#_"
-                        aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>input</code></td>
-                            <td><code>number | bigint | string</code></td>
-                            <td>The number to convert. Negative numbers, string input with commas/underscores, and
-                                BigInts are all supported.</td>
-                        </tr>
-                        <tr>
-                            <td><code>options</code></td>
-                            <td><code>ConvertOptions</code></td>
-                            <td>Optional configuration (see below).</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p><strong>Returns</strong> <code>string</code></p>
-                <h3 id="_-1" class="tsd-anchor-link"><code>ConvertOptions</code><a href="#_-1" aria-label="Permalink"
-                        class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Option</th>
-                            <th>Type</th>
-                            <th>Default</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>locale</code></td>
-                            <td><code>&quot;en&quot; | &quot;in&quot; | &quot;hi&quot; | &quot;de&quot; | &quot;fr&quot;</code>
-                            </td>
-                            <td><code>&quot;en&quot;</code></td>
-                            <td>Target language / numeral system</td>
-                        </tr>
-                        <tr>
-                            <td><code>capitalize</code></td>
-                            <td><code>boolean</code></td>
-                            <td><code>true</code></td>
-                            <td>Capitalise the first letter</td>
-                        </tr>
-                        <tr>
-                            <td><code>useAnd</code></td>
-                            <td><code>boolean</code></td>
-                            <td><code>true</code></td>
-                            <td>Include &quot;and&quot; connector (English only)</td>
-                        </tr>
-                        <tr>
-                            <td><code>currency</code></td>
-                            <td><code>string</code></td>
-                            <td><code>&quot;&quot;</code></td>
-                            <td>Currency label appended to result, e.g. <code>&quot;USD&quot;</code></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h3 id="other-exports" class="tsd-anchor-link">Other exports<a href="#other-exports"
-                        aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <pre><code class="ts"><span class="hl-6">import</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-4">availableLocales</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">registerLocale</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">getLocale</span><span class="hl-1">,</span><br/><span class="hl-1">} </span><span class="hl-6">from</span><span class="hl-1"> </span><span class="hl-5">&#39;@gks101@numtowords&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-0">availableLocales</span><span class="hl-1">(); </span><span class="hl-3">// [&quot;en&quot;, &quot;in&quot;, &quot;hi&quot;, &quot;de&quot;, &quot;fr&quot;]</span>
+<h3 id="german" class="tsd-anchor-link">German<a href="#german" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">21</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;de&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Einundzwanzig&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_000</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;de&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Eine Million&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">2_000_000</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;de&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Zwei Millionen&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <hr>
-                <h2 id="advanced-usage" class="tsd-anchor-link">Advanced Usage<a href="#advanced-usage"
-                        aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h2>
-                <h3 id="bigint-very-large-numbers" class="tsd-anchor-link">BigInt (very large numbers)<a
-                        href="#bigint-very-large-numbers" aria-label="Permalink" class="tsd-anchor-icon"><svg
-                            viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">9_007_199_254_740_993</span><span class="hl-7">n</span><span class="hl-1">); </span><span class="hl-3">// beyond Number.MAX_SAFE_INTEGER</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_00_00_00_00_000</span><span class="hl-7">n</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;in&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;One arab&quot;</span>
+<h3 id="french" class="tsd-anchor-link">French<a href="#french" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">70</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;fr&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Soixante-dix&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">80</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;fr&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Quatre-vingts&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_000</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;fr&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Un million&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <h3 id="disable-capitalisation" class="tsd-anchor-link">Disable capitalisation<a
-                        href="#disable-capitalisation" aria-label="Permalink" class="tsd-anchor-icon"><svg
-                            viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">42</span><span class="hl-1">, { </span><span class="hl-4">capitalize:</span><span class="hl-1"> </span><span class="hl-7">false</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;forty-two&quot;</span>
+<hr>
+<h2 id="api" class="tsd-anchor-link">API<a href="#api" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<h3 id="_" class="tsd-anchor-link"><code>convert(input, options?)</code><a href="#_" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td><code>number | bigint | string</code></td>
+<td>The number to convert. Negative numbers, decimals with <code>.</code>, string input with commas/underscores, and BigInts are all supported.</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>ConvertOptions</code></td>
+<td>Optional configuration (see below).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong> <code>string</code></p>
+<h3 id="_-1" class="tsd-anchor-link"><code>ConvertOptions</code><a href="#_-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>locale</code></td>
+<td><code>&quot;en&quot; | &quot;in&quot; | &quot;hi&quot; | &quot;de&quot; | &quot;fr&quot;</code></td>
+<td><code>&quot;en&quot;</code></td>
+<td>Target language / numeral system</td>
+</tr>
+<tr>
+<td><code>capitalize</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>Capitalise the first letter</td>
+</tr>
+<tr>
+<td><code>useAnd</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>Include &quot;and&quot; connector (English only)</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td>Currency label appended to result, e.g. <code>&quot;USD&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="other-exports" class="tsd-anchor-link">Other exports<a href="#other-exports" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="ts"><span class="hl-6">import</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-5">availableLocales</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-5">registerLocale</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-5">getLocale</span><span class="hl-1">,</span><br/><span class="hl-1">} </span><span class="hl-6">from</span><span class="hl-1"> </span><span class="hl-4">&#39;@gks101/numtowords&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-0">availableLocales</span><span class="hl-1">(); </span><span class="hl-3">// [&quot;en&quot;, &quot;in&quot;, &quot;hi&quot;, &quot;de&quot;, &quot;fr&quot;]</span>
 </code><button type="button">Copy</button></pre>
 
-                <h3 id="disable-and-connector" class="tsd-anchor-link">Disable &quot;and&quot; connector<a
-                        href="#disable-and-connector" aria-label="Permalink" class="tsd-anchor-icon"><svg
-                            viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">101</span><span class="hl-1">, { </span><span class="hl-4">useAnd:</span><span class="hl-1"> </span><span class="hl-7">false</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;One hundred one&quot;</span>
+<hr>
+<h2 id="advanced-usage" class="tsd-anchor-link">Advanced Usage<a href="#advanced-usage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<h3 id="bigint-very-large-numbers" class="tsd-anchor-link">BigInt (very large numbers)<a href="#bigint-very-large-numbers" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">9_007_199_254_740_993</span><span class="hl-7">n</span><span class="hl-1">); </span><span class="hl-3">// beyond Number.MAX_SAFE_INTEGER</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_00_00_00_00_000</span><span class="hl-7">n</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;in&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;One arab&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <h3 id="currency" class="tsd-anchor-link">Currency<a href="#currency" aria-label="Permalink"
-                        class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">5</span><span class="hl-1">, { </span><span class="hl-4">currency:</span><span class="hl-1"> </span><span class="hl-5">&#39;USD&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Five USD&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">100000</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;in&#39;</span><span class="hl-1">, </span><span class="hl-4">currency:</span><span class="hl-1"> </span><span class="hl-5">&#39;INR&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;One lakh INR&quot;</span>
+<h3 id="disable-capitalisation" class="tsd-anchor-link">Disable capitalisation<a href="#disable-capitalisation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">42</span><span class="hl-1">, { </span><span class="hl-5">capitalize:</span><span class="hl-1"> </span><span class="hl-7">false</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;forty-two&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <h3 id="negative-numbers" class="tsd-anchor-link">Negative numbers<a href="#negative-numbers"
-                        aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(-</span><span class="hl-2">1_500</span><span class="hl-1">); </span><span class="hl-3">// &quot;Negative one thousand five hundred&quot;</span>
+<h3 id="disable-and-connector" class="tsd-anchor-link">Disable &quot;and&quot; connector<a href="#disable-and-connector" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">101</span><span class="hl-1">, { </span><span class="hl-5">useAnd:</span><span class="hl-1"> </span><span class="hl-7">false</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;One hundred one&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <hr>
-                <h2 id="registering-a-custom-locale" class="tsd-anchor-link">Registering a Custom Locale<a
-                        href="#registering-a-custom-locale" aria-label="Permalink" class="tsd-anchor-icon"><svg
-                            viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h2>
-                <p>You can add locales at runtime by calling <code>registerLocale()</code> with a LocaleDefinition. The
-                    <code>convert</code> function receives a bigint and the resolved options — return a string (do not
-                    capitalise; the library handles optional capitalization).
-                </p>
-                <p>Minimal stub:</p>
-                <pre><code class="ts"><span class="hl-6">import</span><span class="hl-1"> { </span><span class="hl-4">registerLocale</span><span class="hl-1">, </span><span class="hl-4">convert</span><span class="hl-1"> } </span><span class="hl-6">from</span><span class="hl-1"> </span><span class="hl-5">&#39;@gks101@numtowords&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-0">registerLocale</span><span class="hl-1">(</span><span class="hl-5">&#39;es&#39;</span><span class="hl-1">, {</span><br/><span class="hl-1">  </span><span class="hl-4">name:</span><span class="hl-1"> </span><span class="hl-5">&#39;Spanish&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">n</span><span class="hl-1">, </span><span class="hl-4">_opts</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-3">// minimal implementation — handle zero and fall back to a placeholder</span><br/><span class="hl-1">    </span><span class="hl-6">if</span><span class="hl-1"> (</span><span class="hl-4">n</span><span class="hl-1"> === </span><span class="hl-2">0</span><span class="hl-7">n</span><span class="hl-1">) </span><span class="hl-6">return</span><span class="hl-1"> </span><span class="hl-5">&#39;cero&#39;</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-6">return</span><span class="hl-1"> </span><span class="hl-5">&#39;número&#39;</span><span class="hl-1">;</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">5</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Número&quot; (capitalisation applied by library)</span>
+<h3 id="currency" class="tsd-anchor-link">Currency<a href="#currency" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">5</span><span class="hl-1">, { </span><span class="hl-5">currency:</span><span class="hl-1"> </span><span class="hl-4">&#39;USD&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Five USD&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">100000</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;in&#39;</span><span class="hl-1">, </span><span class="hl-5">currency:</span><span class="hl-1"> </span><span class="hl-4">&#39;INR&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;One lakh INR&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <p>Practical Spanish examples</p>
-                <pre><code class="ts"><span class="hl-3">// Basic numbers</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">0</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Cero&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Uno&quot;</span><br/><span class="hl-3">// Hundreds and thousands</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">100</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Cien&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">101</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Ciento uno&quot;</span><br/><br/><span class="hl-3">// Millions, accents and plurals</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_000</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Un millón&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">2_000_000</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Dos millones&quot;</span><br/><br/><span class="hl-3">// Negative and currency examples</span><br/><span class="hl-0">convert</span><span class="hl-1">(-</span><span class="hl-2">5</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Negativo cinco&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1</span><span class="hl-1">, { </span><span class="hl-4">locale:</span><span class="hl-1"> </span><span class="hl-5">&#39;es&#39;</span><span class="hl-1">, </span><span class="hl-4">currency:</span><span class="hl-1"> </span><span class="hl-5">&#39;EUR&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Uno EUR&quot;</span>
+<h3 id="negative-numbers" class="tsd-anchor-link">Negative numbers<a href="#negative-numbers" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="ts"><span class="hl-0">convert</span><span class="hl-1">(-</span><span class="hl-2">1_500</span><span class="hl-1">); </span><span class="hl-3">// &quot;Negative one thousand five hundred&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <p>Notes</p>
-                <ul>
-                    <li>Your locale's <code>convert</code> should accept <code>n: bigint</code> and return the words in
-                        lowercase (prefer returning canonical forms with proper accents); the main library applies
-                        capitalization when <code>capitalize: true</code>.</li>
-                    <li>Implementations may use BigInt arithmetic and should avoid throwing for valid numeric inputs.
-                    </li>
-                    <li>For full correctness in Spanish, handle special forms (e.g., &quot;cien&quot; vs
-                        &quot;ciento&quot;), accents (dieciséis, veintidós), and pluralisation (&quot;millón&quot; →
-                        &quot;millones&quot;).</li>
-                </ul>
-                <hr>
-                <h2 id="bundle-formats" class="tsd-anchor-link">Bundle Formats<a href="#bundle-formats"
-                        aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>File</th>
-                            <th>Format</th>
-                            <th>Use case</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>dist/index.esm.js</code></td>
-                            <td>ES Module</td>
-                            <td>Bundlers (Vite, webpack, Rollup)</td>
-                        </tr>
-                        <tr>
-                            <td><code>dist/index.cjs.js</code></td>
-                            <td>CommonJS</td>
-                            <td>Node.js (<code>require</code>)</td>
-                        </tr>
-                        <tr>
-                            <td><code>dist/index.umd.js</code></td>
-                            <td>UMD</td>
-                            <td>Browser <code>&lt;script&gt;</code> tags</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h3 id="browser-via-cdn" class="tsd-anchor-link">Browser via CDN<a href="#browser-via-cdn"
-                        aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h3>
-                <pre><code class="html"><span class="hl-8">&lt;</span><span class="hl-9">script</span><span class="hl-10"> </span><span class="hl-11">src</span><span class="hl-10">=</span><span class="hl-12">&quot;dist/index.umd.js&quot;</span><span class="hl-8">&gt;&lt;/</span><span class="hl-9">script</span><span class="hl-8">&gt;</span><br/><span class="hl-8">&lt;</span><span class="hl-9">script</span><span class="hl-8">&gt;</span><br/><span class="hl-10">  </span><span class="hl-4">console</span><span class="hl-10">.</span><span class="hl-0">log</span><span class="hl-10">(</span><span class="hl-4">NumToWords</span><span class="hl-10">.</span><span class="hl-0">convert</span><span class="hl-10">(</span><span class="hl-2">1000000</span><span class="hl-10">)); </span><span class="hl-3">// &quot;One million&quot;</span><br/><span class="hl-8">&lt;/</span><span class="hl-9">script</span><span class="hl-8">&gt;</span>
+<hr>
+<h2 id="registering-a-custom-locale" class="tsd-anchor-link">Registering a Custom Locale<a href="#registering-a-custom-locale" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>You can add locales at runtime by calling <code>registerLocale()</code> with a LocaleDefinition. The <code>convert</code> function receives a bigint and the resolved options — return a string (do not capitalise; the library handles optional capitalization).</p>
+<p>Minimal stub:</p>
+<pre><code class="ts"><span class="hl-6">import</span><span class="hl-1"> { </span><span class="hl-5">registerLocale</span><span class="hl-1">, </span><span class="hl-5">convert</span><span class="hl-1"> } </span><span class="hl-6">from</span><span class="hl-1"> </span><span class="hl-4">&#39;@gks101/numtowords&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-0">registerLocale</span><span class="hl-1">(</span><span class="hl-4">&#39;es&#39;</span><span class="hl-1">, {</span><br/><span class="hl-1">  </span><span class="hl-5">name:</span><span class="hl-1"> </span><span class="hl-4">&#39;Spanish&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-5">decimalPoint:</span><span class="hl-1"> </span><span class="hl-4">&#39;punto&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-5">decimalDigits:</span><span class="hl-1"> [</span><br/><span class="hl-1">    </span><span class="hl-4">&#39;cero&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">&#39;uno&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">&#39;dos&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">&#39;tres&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">&#39;cuatro&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">&#39;cinco&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">&#39;seis&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">&#39;siete&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">&#39;ocho&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">&#39;nueve&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  ],</span><br/><span class="hl-1">  </span><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-5">n</span><span class="hl-1">, </span><span class="hl-5">_opts</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-3">// minimal implementation — handle zero and fall back to a placeholder</span><br/><span class="hl-1">    </span><span class="hl-6">if</span><span class="hl-1"> (</span><span class="hl-5">n</span><span class="hl-1"> === </span><span class="hl-2">0</span><span class="hl-7">n</span><span class="hl-1">) </span><span class="hl-6">return</span><span class="hl-1"> </span><span class="hl-4">&#39;cero&#39;</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-6">return</span><span class="hl-1"> </span><span class="hl-4">&#39;número&#39;</span><span class="hl-1">;</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">5</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Número&quot; (capitalisation applied by library)</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-4">&#39;5.25&#39;</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Número punto dos cinco&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <hr>
-                <h2 id="building-from-source" class="tsd-anchor-link">Building from Source<a
-                        href="#building-from-source" aria-label="Permalink" class="tsd-anchor-icon"><svg
-                            viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h2>
-                <pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-5">install</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-5">run</span><span class="hl-1"> </span><span class="hl-5">build</span><span class="hl-1">   </span><span class="hl-3"># Rollup → dist/</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-5">test</span><span class="hl-1">        </span><span class="hl-3"># Jest test suite</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-5">run</span><span class="hl-1"> </span><span class="hl-5">lint</span><span class="hl-1">    </span><span class="hl-3"># TypeScript type check</span>
+<p>Practical Spanish examples</p>
+<pre><code class="ts"><span class="hl-3">// Basic numbers</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">0</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Cero&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Uno&quot;</span><br/><span class="hl-3">// Hundreds and thousands</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">100</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Cien&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">101</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Ciento uno&quot;</span><br/><br/><span class="hl-3">// Millions, accents and plurals</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1_000_000</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Un millón&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">2_000_000</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Dos millones&quot;</span><br/><br/><span class="hl-3">// Negative and currency examples</span><br/><span class="hl-0">convert</span><span class="hl-1">(-</span><span class="hl-2">5</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;es&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Negativo cinco&quot;</span><br/><span class="hl-0">convert</span><span class="hl-1">(</span><span class="hl-2">1</span><span class="hl-1">, { </span><span class="hl-5">locale:</span><span class="hl-1"> </span><span class="hl-4">&#39;es&#39;</span><span class="hl-1">, </span><span class="hl-5">currency:</span><span class="hl-1"> </span><span class="hl-4">&#39;EUR&#39;</span><span class="hl-1"> }); </span><span class="hl-3">// &quot;Uno EUR&quot;</span>
 </code><button type="button">Copy</button></pre>
 
-                <hr>
-                <h2 id="indian-numeral-scale-reference" class="tsd-anchor-link">Indian Numeral Scale Reference<a
-                        href="#indian-numeral-scale-reference" aria-label="Permalink" class="tsd-anchor-icon"><svg
-                            viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Value</th>
-                            <th>Indian Name</th>
-                            <th>English equivalent</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1,000</td>
-                            <td>Thousand</td>
-                            <td>Thousand</td>
-                        </tr>
-                        <tr>
-                            <td>1,00,000</td>
-                            <td>Lakh</td>
-                            <td>Hundred Thousand</td>
-                        </tr>
-                        <tr>
-                            <td>1,00,00,000</td>
-                            <td>Crore</td>
-                            <td>Ten Million</td>
-                        </tr>
-                        <tr>
-                            <td>1,00,00,00,000</td>
-                            <td>Arab</td>
-                            <td>Billion</td>
-                        </tr>
-                        <tr>
-                            <td>1,00,00,00,00,000</td>
-                            <td>Kharab</td>
-                            <td>Hundred Billion</td>
-                        </tr>
-                        <tr>
-                            <td>1,00,00,00,00,00,000</td>
-                            <td>Neel</td>
-                            <td>Ten Trillion</td>
-                        </tr>
-                        <tr>
-                            <td>1,00,00,00,00,00,00,000</td>
-                            <td>Padma</td>
-                            <td>Quadrillion</td>
-                        </tr>
-                        <tr>
-                            <td>1,00,00,00,00,00,00,00,000</td>
-                            <td>Shankh</td>
-                            <td>Hundred Quadrillion</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <hr>
-                <h2 id="license" class="tsd-anchor-link">License<a href="#license" aria-label="Permalink"
-                        class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="assets/icons.svg#icon-anchor"></use>
-                        </svg></a></h2>
-                <p>MIT</p>
-            </div>
-        </div>
-        <div class="col-sidebar">
-            <div class="page-menu">
-                <div class="tsd-navigation settings">
-                    <details class="tsd-accordion">
-                        <summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" aria-hidden="true">
-                                <use href="assets/icons.svg#icon-chevronDown"></use>
-                            </svg>
-                            <h3>Settings</h3>
-                        </summary>
-                        <div class="tsd-accordion-details">
-                            <div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span>
-                                <ul id="tsd-filter-options">
-                                    <li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox"
-                                                id="tsd-filter-protected" name="protected" /><svg width="32" height="32"
-                                                viewBox="0 0 32 32" aria-hidden="true">
-                                                <rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1"
-                                                    rx="6" fill="none"></rect>
-                                                <path class="tsd-checkbox-checkmark"
-                                                    d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none"
-                                                    stroke-width="3.5" stroke-linejoin="round" fill="none"></path>
-                                            </svg><span>Protected</span></label></li>
-                                    <li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox"
-                                                id="tsd-filter-inherited" name="inherited" checked /><svg width="32"
-                                                height="32" viewBox="0 0 32 32" aria-hidden="true">
-                                                <rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1"
-                                                    rx="6" fill="none"></rect>
-                                                <path class="tsd-checkbox-checkmark"
-                                                    d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none"
-                                                    stroke-width="3.5" stroke-linejoin="round" fill="none"></path>
-                                            </svg><span>Inherited</span></label></li>
-                                    <li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox"
-                                                id="tsd-filter-external" name="external" /><svg width="32" height="32"
-                                                viewBox="0 0 32 32" aria-hidden="true">
-                                                <rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1"
-                                                    rx="6" fill="none"></rect>
-                                                <path class="tsd-checkbox-checkmark"
-                                                    d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none"
-                                                    stroke-width="3.5" stroke-linejoin="round" fill="none"></path>
-                                            </svg><span>External</span></label></li>
-                                </ul>
-                            </div>
-                            <div class="tsd-theme-toggle"><label class="settings-label"
-                                    for="tsd-theme">Theme</label><select id="tsd-theme">
-                                    <option value="os">OS</option>
-                                    <option value="light">Light</option>
-                                    <option value="dark">Dark</option>
-                                </select></div>
-                        </div>
-                    </details>
-                </div>
-                <details open class="tsd-accordion tsd-page-navigation">
-                    <summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            aria-hidden="true">
-                            <use href="assets/icons.svg#icon-chevronDown"></use>
-                        </svg>
-                        <h3>On This Page</h3>
-                    </summary>
-                    <div class="tsd-accordion-details"><a href="#gks101numtowords"><span>@gks101/numtowords</span></a>
-                        <ul>
-                            <li><a href="#features"><span>Features</span></a></li>
-                            <li><a href="#installation"><span>Installation</span></a></li>
-                            <li><a href="#quick-start"><span>Quick <wbr/>Start</span></a></li>
-                            <li>
-                                <ul>
-                                    <li><a href="#indian-numbering-system"><span>Indian numbering system</span></a></li>
-                                    <li><a href="#hindi-devanagari"><span>Hindi (<wbr/>Devanagari)</span></a></li>
-                                    <li><a href="#german"><span>German</span></a></li>
-                                    <li><a href="#french"><span>French</span></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#api"><span>API</span></a></li>
-                            <li>
-                                <ul>
-                                    <li><a href="#_"><span></span></a></li>
-                                    <li><a href="#_-1"><span></span></a></li>
-                                    <li><a href="#other-exports"><span>Other exports</span></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#advanced-usage"><span>Advanced <wbr/>Usage</span></a></li>
-                            <li>
-                                <ul>
-                                    <li><a
-                                            href="#bigint-very-large-numbers"><span>Big<wbr/>Int (very large numbers)</span></a>
-                                    </li>
-                                    <li><a href="#disable-capitalisation"><span>Disable capitalisation</span></a></li>
-                                    <li><a href="#disable-and-connector"><span>Disable &quot;and&quot;
-                                                connector</span></a></li>
-                                    <li><a href="#currency"><span>Currency</span></a></li>
-                                    <li><a href="#negative-numbers"><span>Negative numbers</span></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#registering-a-custom-locale"><span>Registering a <wbr/>Custom
-                                        <wbr/>Locale</span></a></li>
-                            <li><a href="#bundle-formats"><span>Bundle <wbr/>Formats</span></a></li>
-                            <li>
-                                <ul>
-                                    <li><a href="#browser-via-cdn"><span>Browser via <wbr/>CDN</span></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#building-from-source"><span>Building from <wbr/>Source</span></a></li>
-                            <li><a href="#indian-numeral-scale-reference"><span>Indian <wbr/>Numeral <wbr/>Scale
-                                        <wbr/>Reference</span></a></li>
-                            <li><a href="#license"><span>License</span></a></li>
-                        </ul>
-                    </div>
-                </details>
-            </div>
-            <div class="site-menu">
-                <nav class="tsd-navigation"><a href="modules.html">@gks101/numtowords</a>
-                    <ul class="tsd-small-nested-navigation" id="tsd-nav-container">
-                        <li>Loading...</li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a> with <a
-                href="https://github.com/JulianWowra/typedoc-github-theme" target="_blank">typedoc-github-theme</a></p>
-    </footer>
-    <div class="overlay"></div>
-</body>
+<p>Notes</p>
+<ul>
+<li>Your locale's <code>convert</code> should accept <code>n: bigint</code> and return the words in lowercase (prefer returning canonical forms with proper accents); the main library applies capitalization when <code>capitalize: true</code>.</li>
+<li>Set <code>decimalPoint</code> and optionally <code>decimalDigits</code> to localize decimal output. Without <code>decimalDigits</code>, fractional digits fall back to calling your locale's <code>convert</code> for each digit.</li>
+<li>Implementations may use BigInt arithmetic and should avoid throwing for valid numeric inputs.</li>
+<li>For full correctness in Spanish, handle special forms (e.g., &quot;cien&quot; vs &quot;ciento&quot;), accents (dieciséis, veintidós), and pluralisation (&quot;millón&quot; → &quot;millones&quot;).</li>
+</ul>
+<hr>
+<h2 id="bundle-formats" class="tsd-anchor-link">Bundle Formats<a href="#bundle-formats" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Format</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dist/index.esm.js</code></td>
+<td>ES Module</td>
+<td>Bundlers (Vite, webpack, Rollup)</td>
+</tr>
+<tr>
+<td><code>dist/index.cjs.js</code></td>
+<td>CommonJS</td>
+<td>Node.js (<code>require</code>)</td>
+</tr>
+<tr>
+<td><code>dist/index.umd.js</code></td>
+<td>UMD</td>
+<td>Browser <code>&lt;script&gt;</code> tags</td>
+</tr>
+</tbody>
+</table>
+<h3 id="browser-via-cdn" class="tsd-anchor-link">Browser via CDN<a href="#browser-via-cdn" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="html"><span class="hl-8">&lt;</span><span class="hl-9">script</span><span class="hl-10"> </span><span class="hl-11">src</span><span class="hl-10">=</span><span class="hl-12">&quot;dist/index.umd.js&quot;</span><span class="hl-8">&gt;&lt;/</span><span class="hl-9">script</span><span class="hl-8">&gt;</span><br/><span class="hl-8">&lt;</span><span class="hl-9">script</span><span class="hl-8">&gt;</span><br/><span class="hl-10">  </span><span class="hl-5">console</span><span class="hl-10">.</span><span class="hl-0">log</span><span class="hl-10">(</span><span class="hl-5">NumToWords</span><span class="hl-10">.</span><span class="hl-0">convert</span><span class="hl-10">(</span><span class="hl-2">1000000</span><span class="hl-10">)); </span><span class="hl-3">// &quot;One million&quot;</span><br/><span class="hl-8">&lt;/</span><span class="hl-9">script</span><span class="hl-8">&gt;</span>
+</code><button type="button">Copy</button></pre>
 
-</html>
+<hr>
+<h2 id="building-from-source" class="tsd-anchor-link">Building from Source<a href="#building-from-source" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-4">install</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-4">run</span><span class="hl-1"> </span><span class="hl-4">build</span><span class="hl-1">   </span><span class="hl-3"># Rollup → dist/</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-4">test</span><span class="hl-1">        </span><span class="hl-3"># Jest test suite</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-4">run</span><span class="hl-1"> </span><span class="hl-4">lint</span><span class="hl-1">    </span><span class="hl-3"># TypeScript type check</span>
+</code><button type="button">Copy</button></pre>
+
+<hr>
+<h2 id="indian-numeral-scale-reference" class="tsd-anchor-link">Indian Numeral Scale Reference<a href="#indian-numeral-scale-reference" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Indian Name</th>
+<th>English equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1,000</td>
+<td>Thousand</td>
+<td>Thousand</td>
+</tr>
+<tr>
+<td>1,00,000</td>
+<td>Lakh</td>
+<td>Hundred Thousand</td>
+</tr>
+<tr>
+<td>1,00,00,000</td>
+<td>Crore</td>
+<td>Ten Million</td>
+</tr>
+<tr>
+<td>1,00,00,00,000</td>
+<td>Arab</td>
+<td>Billion</td>
+</tr>
+<tr>
+<td>1,00,00,00,00,000</td>
+<td>Kharab</td>
+<td>Hundred Billion</td>
+</tr>
+<tr>
+<td>1,00,00,00,00,00,000</td>
+<td>Neel</td>
+<td>Ten Trillion</td>
+</tr>
+<tr>
+<td>1,00,00,00,00,00,00,000</td>
+<td>Padma</td>
+<td>Quadrillion</td>
+</tr>
+<tr>
+<td>1,00,00,00,00,00,00,00,000</td>
+<td>Shankh</td>
+<td>Hundred Quadrillion</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="license" class="tsd-anchor-link">License<a href="#license" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>MIT</p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#gks101numtowords"><span>@gks101/numtowords</span></a><ul><li><a href="#features"><span>Features</span></a></li><li><a href="#installation"><span>Installation</span></a></li><li><a href="#quick-start"><span>Quick <wbr/>Start</span></a></li><li><ul><li><a href="#decimal-numbers"><span>Decimal numbers</span></a></li><li><a href="#indian-numbering-system"><span>Indian numbering system</span></a></li><li><a href="#hindi-devanagari"><span>Hindi (<wbr/>Devanagari)</span></a></li><li><a href="#german"><span>German</span></a></li><li><a href="#french"><span>French</span></a></li></ul></li><li><a href="#api"><span>API</span></a></li><li><ul><li><a href="#_"><span></span></a></li><li><a href="#_-1"><span></span></a></li><li><a href="#other-exports"><span>Other exports</span></a></li></ul></li><li><a href="#advanced-usage"><span>Advanced <wbr/>Usage</span></a></li><li><ul><li><a href="#bigint-very-large-numbers"><span>Big<wbr/>Int (very large numbers)</span></a></li><li><a href="#disable-capitalisation"><span>Disable capitalisation</span></a></li><li><a href="#disable-and-connector"><span>Disable &quot;and&quot; connector</span></a></li><li><a href="#currency"><span>Currency</span></a></li><li><a href="#negative-numbers"><span>Negative numbers</span></a></li></ul></li><li><a href="#registering-a-custom-locale"><span>Registering a <wbr/>Custom <wbr/>Locale</span></a></li><li><a href="#bundle-formats"><span>Bundle <wbr/>Formats</span></a></li><li><ul><li><a href="#browser-via-cdn"><span>Browser via <wbr/>CDN</span></a></li></ul></li><li><a href="#building-from-source"><span>Building from <wbr/>Source</span></a></li><li><a href="#indian-numeral-scale-reference"><span>Indian <wbr/>Numeral <wbr/>Scale <wbr/>Reference</span></a></li><li><a href="#license"><span>License</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">@gks101/numtowords - v1.0.3</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a> with <a href="https://github.com/JulianWowra/typedoc-github-theme" target="_blank">typedoc-github-theme</a></p></footer><div class="overlay"></div></body></html>
