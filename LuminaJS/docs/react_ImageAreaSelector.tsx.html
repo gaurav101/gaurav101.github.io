@@ -48,7 +48,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import { useState, useRef, useCallback, useEffect } from 'react';
-import type { FC, MouseEvent, ReactNode } from 'react';
+import type { FC, MouseEvent, TouchEvent, ReactNode } from 'react';
 
 export interface CropArea {
   x: number;
@@ -330,6 +330,8 @@ export const ImageAreaSelector: FC&lt;ImageAreaSelectorProps> = ({
   const dragModeRef = useRef&lt;DragMode>('draw');
   const resizeHandleRef = useRef&lt;ResizeHandle | null>(null);
   const resizeStartCropRef = useRef&lt;CropArea | null>(null);
+  const initialPinchDistanceRef = useRef&lt;number | null>(null);
+  const pinchStartCropRef = useRef&lt;CropArea | null>(null);
 
   const updateDisplayScale = useCallback(() => {
     const img = imgRef.current;
@@ -344,27 +346,40 @@ export const ImageAreaSelector: FC&lt;ImageAreaSelectorProps> = ({
     });
   }, []);
 
-  const getImagePoint = useCallback((e: MouseEvent&lt;HTMLElement>) => {
-    const img = imgRef.current;
-    const rect = img?.getBoundingClientRect();
-    if (!rect || !img) return null;
+  const getImagePoint = useCallback(
+    (e: MouseEvent&lt;HTMLElement> | TouchEvent&lt;HTMLElement>) => {
+      const img = imgRef.current;
+      const rect = img?.getBoundingClientRect();
+      if (!rect || !img) return null;
 
-    const scaleX = img.naturalWidth / rect.width;
-    const scaleY = img.naturalHeight / rect.height;
+      const scaleX = img.naturalWidth / rect.width;
+      const scaleY = img.naturalHeight / rect.height;
 
-    return {
-      x: Math.max(
-        0,
-        Math.min((e.clientX - rect.left) * scaleX, img.naturalWidth),
-      ),
-      y: Math.max(
-        0,
-        Math.min((e.clientY - rect.top) * scaleY, img.naturalHeight),
-      ),
-      imageWidth: img.naturalWidth,
-      imageHeight: img.naturalHeight,
-    };
-  }, []);
+      let clientX, clientY;
+      if ('touches' in e) {
+        if (e.touches.length === 0) return null;
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      }
+
+      return {
+        x: Math.max(
+          0,
+          Math.min((clientX - rect.left) * scaleX, img.naturalWidth),
+        ),
+        y: Math.max(
+          0,
+          Math.min((clientY - rect.top) * scaleY, img.naturalHeight),
+        ),
+        imageWidth: img.naturalWidth,
+        imageHeight: img.naturalHeight,
+      };
+    },
+    [],
+  );
 
   const getResizeHandle = useCallback(
     (point: { x: number; y: number }) => {
@@ -402,9 +417,27 @@ export const ImageAreaSelector: FC&lt;ImageAreaSelectorProps> = ({
     [allowResize, displayScale.scaleX, displayScale.scaleY],
   );
 
-  const handleMouseDown = useCallback(
-    (e: MouseEvent&lt;HTMLDivElement>) => {
-      if (e.button !== 0) return;
+  const handleInteractionStart = useCallback(
+    (e: MouseEvent&lt;HTMLDivElement> | TouchEvent&lt;HTMLDivElement>) => {
+      if ('button' in e &amp;&amp; e.button !== 0) return;
+
+      if ('touches' in e &amp;&amp; e.touches.length === 2) {
+        const touch1 = e.touches[0];
+        const touch2 = e.touches[1];
+        const dist = Math.hypot(
+          touch2.clientX - touch1.clientX,
+          touch2.clientY - touch1.clientY,
+        );
+        initialPinchDistanceRef.current = dist;
+        pinchStartCropRef.current = cropRef.current;
+        setIsDragging(true);
+        isDraggingRef.current = true;
+        dragModeRef.current = 'resize';
+        setDragMode('resize');
+        return;
+      }
+
+      if ('touches' in e &amp;&amp; e.touches.length > 2) return;
 
       const point = getImagePoint(e);
       if (!point) return;
@@ -458,9 +491,56 @@ export const ImageAreaSelector: FC&lt;ImageAreaSelectorProps> = ({
     [getImagePoint, getResizeHandle],
   );
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent&lt;HTMLDivElement>) => {
+  const handleInteractionMove = useCallback(
+    (e: MouseEvent&lt;HTMLDivElement> | TouchEvent&lt;HTMLDivElement>) => {
       if (!isDragging || !imgRef.current) return;
+
+      if ('touches' in e &amp;&amp; e.touches.length === 2) {
+        if (
+          initialPinchDistanceRef.current !== null &amp;&amp;
+          pinchStartCropRef.current !== null
+        ) {
+          const touch1 = e.touches[0];
+          const touch2 = e.touches[1];
+          const dist = Math.hypot(
+            touch2.clientX - touch1.clientX,
+            touch2.clientY - touch1.clientY,
+          );
+          const scale = dist / initialPinchDistanceRef.current;
+
+          const startCrop = pinchStartCropRef.current;
+          const imgWidth = imgRef.current.naturalWidth;
+          const imgHeight = imgRef.current.naturalHeight;
+
+          let newWidth = startCrop.width * scale;
+          let newHeight = aspect ? newWidth / aspect : startCrop.height * scale;
+
+          newWidth = Math.max(MIN_CROP_SIZE, Math.min(newWidth, imgWidth));
+          newHeight = Math.max(MIN_CROP_SIZE, Math.min(newHeight, imgHeight));
+
+          if (aspect &amp;&amp; newHeight > imgHeight) {
+            newHeight = imgHeight;
+            newWidth = newHeight * aspect;
+          }
+
+          const centerX = startCrop.x + startCrop.width / 2;
+          const centerY = startCrop.y + startCrop.height / 2;
+
+          const newX = centerX - newWidth / 2;
+          const newY = centerY - newHeight / 2;
+
+          const newCrop = clampAspectCrop(
+            { x: newX, y: newY, width: newWidth, height: newHeight },
+            imgWidth,
+            imgHeight,
+          );
+
+          cropRef.current = newCrop;
+          setCrop(newCrop);
+          onCropChange(newCrop);
+        }
+        return;
+      }
 
       const point = getImagePoint(e);
       if (!point) return;
@@ -548,6 +628,8 @@ export const ImageAreaSelector: FC&lt;ImageAreaSelectorProps> = ({
     resizeHandleRef.current = null;
     setActiveResizeHandle(null);
     resizeStartCropRef.current = null;
+    initialPinchDistanceRef.current = null;
+    pinchStartCropRef.current = null;
 
     const finalCrop = cropRef.current;
     if (finalCrop.width > 0 &amp;&amp; finalCrop.height > 0) {
@@ -579,11 +661,16 @@ export const ImageAreaSelector: FC&lt;ImageAreaSelectorProps> = ({
               ? 'crosshair'
               : 'crosshair'),
         userSelect: 'none',
+        touchAction: 'none',
       }}
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
+      onMouseDown={handleInteractionStart}
+      onMouseMove={handleInteractionMove}
       onMouseUp={stopDragging}
       onMouseLeave={stopDragging}
+      onTouchStart={handleInteractionStart}
+      onTouchMove={handleInteractionMove}
+      onTouchEnd={stopDragging}
+      onTouchCancel={stopDragging}
     >
       &lt;img
         ref={imgRef}
@@ -657,6 +744,10 @@ export const ImageAreaSelector: FC&lt;ImageAreaSelectorProps> = ({
                   onMouseDown={(ev) => ev.stopPropagation()}
                   onMouseUp={(ev) => ev.stopPropagation()}
                   onClick={(ev) => ev.stopPropagation()}
+                  onTouchStart={(ev) => ev.stopPropagation()}
+                  onTouchMove={(ev) => ev.stopPropagation()}
+                  onTouchEnd={(ev) => ev.stopPropagation()}
+                  onTouchCancel={(ev) => ev.stopPropagation()}
                 >
                   {overlayControls({
                     left: leftPx,
@@ -688,7 +779,7 @@ export const ImageAreaSelector: FC&lt;ImageAreaSelectorProps> = ({
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Sun May 17 2026 12:18:19 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Sun May 17 2026 14:04:33 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
