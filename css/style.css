@@ -847,3 +847,73 @@ footer {
         padding-left: 45px;
     }
 }
+
+/* ===== NEW STYLES FOR PROJECTS & CONTACT ===== */
+.projects-subcategory-title {
+    font-size: 1.8rem;
+    margin: 40px 0 24px;
+    padding-left: 15px;
+    border-left: 3px solid var(--accent-primary);
+    text-align: left;
+    opacity: 0.9;
+}
+
+.projects-subcategory-title.open-source {
+    border-left-color: var(--accent-secondary);
+    margin-top: 60px;
+}
+
+.project-version {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    color: var(--accent-primary);
+    border-radius: 4px;
+    margin-left: 8px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.project-links {
+    display: flex;
+    gap: 16px;
+    margin-top: auto;
+    padding-top: 16px;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.project-link:hover {
+    color: var(--text-primary);
+}
+
+.project-link svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.contact-svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    vertical-align: middle;
+}
+
+.contact-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
