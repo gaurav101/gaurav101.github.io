@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-05-27T09:35:04.404Z",
+  "artifacts": [
+    {
+      "name": "examples-home",
+      "path": "."
+    },
+    {
+      "name": "react",
+      "path": "react"
+    },
+    {
+      "name": "vanilla-js",
+      "path": "vanilla-js"
+    },
+    {
+      "name": "css-demo",
+      "path": "css-demo"
+    },
+    {
+      "name": "storybook",
+      "path": "storybook"
+    },
+    {
+      "name": "docs",
+      "path": "docs"
+    }
+  ]
+}
