@@ -99,8 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Theme toggle and persistence
     const themeToggleBtn = document.getElementsByClassName('theme-toggle-btn');
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
+   
     const applyTheme = (theme) => {
         document.body.dataset.theme = theme;
         localStorage.setItem('theme', theme);
@@ -111,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     };
 
-    applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+    applyTheme(savedTheme || ('dark' ));
     for (let btn of themeToggleBtn) {
         btn?.addEventListener('click', () => {
             applyTheme(document.body.dataset.theme === 'dark' ? 'light' : 'dark');
