@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // 1. Initial Load Animations
     const elementsToAnimate = document.querySelectorAll('.hidden-onload');
-    
+
     setTimeout(() => {
         elementsToAnimate.forEach(el => {
             const delay = el.getAttribute('data-delay') || 0;
@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Scroll Animations using Intersection Observer
     const fadeElements = document.querySelectorAll('.fade-in');
-    
+
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.15
     };
-    
+
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, observerOptions);
-    
+
     fadeElements.forEach(el => {
         observer.observe(el);
     });
@@ -66,13 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. Mobile Menu Toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenuBtn = document.querySelector('#mobile-menu-btn');
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-menu a');
 
     mobileMenuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('active');
-        
+
         // Animate hamburger icon
         const spans = mobileMenuBtn.querySelectorAll('span');
         if (mobileMenu.classList.contains('active')) {
@@ -96,7 +96,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Custom Cursor (Optional subtle interactive element)
+    // 5. Theme toggle and persistence
+    const themeToggleBtn = document.getElementsByClassName('theme-toggle-btn');
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const applyTheme = (theme) => {
+        document.body.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
+        for (let btn of themeToggleBtn) {
+            btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+            btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        }
+
+    };
+
+    applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+    for (let btn of themeToggleBtn) {
+        btn?.addEventListener('click', () => {
+            applyTheme(document.body.dataset.theme === 'dark' ? 'light' : 'dark');
+        });
+    }
+
+
+    const colorSchemeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+    if (colorSchemeMedia.addEventListener) {
+        colorSchemeMedia.addEventListener('change', (event) => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(event.matches ? 'dark' : 'light');
+            }
+        });
+    }
+
+    // 6. Custom Cursor (Optional subtle interactive element)
     const cursor = document.getElementById('glow-cursor');
     if (cursor && !('ontouchstart' in window)) {
         // Only on non-touch devices
@@ -109,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cursor.style.transform = 'translate(-50%, -50%)';
         cursor.style.zIndex = '9999';
         cursor.style.mixBlendMode = 'screen';
-        
+
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
