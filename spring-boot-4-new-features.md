@@ -1,4 +1,4 @@
-# Spring Boot 4 New Features Explained in Simple English
+# Spring Boot 4 New Features
 
 Spring Boot 4 is a major generation of Spring Boot. It builds on Spring Framework 7 and brings many new features across web APIs, HTTP clients, testing, observability, data, messaging, build tools, and project structure.
 
