@@ -2,7 +2,7 @@
 
 Spring Boot 4 is a major generation of Spring Boot. It builds on Spring Framework 7 and brings many new features across web APIs, HTTP clients, testing, observability, data, messaging, build tools, and project structure.
 
-This article covers the stable Spring Boot 4.x line available at the time of writing: Spring Boot 4.0.x and Spring Boot 4.1.x. The latest stable documentation currently points to Spring Boot 4.1.1. Spring Boot 4.2.0-M1 exists as a preview milestone, but preview features are not included here as production features.
+This page covers the stable Spring Boot 4.x line available at the time of writing: Spring Boot 4.0.x and Spring Boot 4.1.x. The latest stable documentation currently points to Spring Boot 4.1.1. Spring Boot 4.2.0-M1 exists as a preview milestone, but preview features are not included here as production features.
 
 ## Quick Feature List
 
